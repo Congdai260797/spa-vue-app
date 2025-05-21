@@ -27,12 +27,14 @@ const router = createRouter({
 });
 
 router.afterEach(() => {
+
     // Check if the route is '/home'
     // if (to.fullPath === '/home') {
 
     // Create a new <script> element to load an external JavaScript file
     const script = document.createElement('script');
     script.src = '/js/waiting.js'; // Path to the script file
+    console.log('Route changed!'); // Log when the route changes
     script.type = 'text/javascript'; // Set the type attribute to JavaScript
     script.async = true; // Allow the script to load asynchronously
 
