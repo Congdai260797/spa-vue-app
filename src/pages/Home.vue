@@ -5,7 +5,9 @@
       class="py-12 md:py-20 bg-primary text-primary-foreground rounded-lg mb-12"
     >
       <div class="text-center px-4">
-        <h1 class="text-3xl md:text-5xl font-bold mb-4">Welcome to MyBlog</h1>
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">
+          Welcome to MyBlog CD
+        </h1>
         <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">
           Discover interesting articles and stay updated with the latest trends.
         </p>
