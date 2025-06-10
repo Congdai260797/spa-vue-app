@@ -1,11 +1,10 @@
 <template>
   <div class="min-h-screen bg-gray-50">
-    <header class="bg-white shadow">
+    <!-- <header class="bg-white shadow">
       <nav class="container mx-auto px-4 py-4">
         <div class="flex justify-between items-center">
           <div class="text-xl font-bold text-primary">MyBlog</div>
 
-          <!-- Mobile menu button -->
           <button
             @click="isMenuOpen = !isMenuOpen"
             class="md:hidden focus:outline-none"
@@ -43,7 +42,6 @@
             </svg>
           </button>
 
-          <!-- Desktop menu -->
           <div class="hidden md:flex space-x-4">
             <router-link
               to="/"
@@ -137,7 +135,6 @@
           </div>
         </div>
 
-        <!-- Mobile menu -->
         <div v-if="isMenuOpen" class="md:hidden mt-4 space-y-2">
           <router-link
             to="/"
@@ -225,22 +222,40 @@
           </router-link>
         </div>
       </nav>
-    </header>
+    </header> -->
 
-    <main class="container mx-auto px-4 py-8">
+    <AppHeader />
+    <!-- <main class="container mx-auto px-4 py-8">
       <router-view />
+    </main> -->
+
+    <main class="flex-grow wavy-bg">
+      <div class="mx-auto">
+        <BookingForm />
+        <Articles />
+        <Feedback />
+      </div>
     </main>
 
-    <footer class="bg-gray-800 text-white py-8">
+    <Newsletter />
+    <AppFooter />
+
+    <!-- <footer class="bg-gray-800 text-white py-8">
       <div class="container mx-auto px-4 text-center">
         <p>© {{ new Date().getFullYear() }} MyBlog. All rights reserved.</p>
       </div>
-    </footer>
+    </footer> -->
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import AppHeader from "./pages/Header.vue";
+import BookingForm from "./pages/BookingForm.vue";
+import Newsletter from "./pages/Newsletter.vue";
+import AppFooter from "./pages/AppFooter.vue";
+import Articles from "./pages/Articles.vue";
+import Feedback from "./pages/Feedback.vue";
 
 const isMenuOpen = ref(false);
 const isCategoriesOpen = ref(false);

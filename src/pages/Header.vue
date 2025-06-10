@@ -1,0 +1,42 @@
+<script setup>
+// Không cần script logic cho component này
+</script>
+
+<template>
+  <header class="bg-cream">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="#" class="text-2xl font-bold text-brand-blue">
+        <img src="./../assets/image/logo.png" alt="PetstieCare Logo" />
+      </a>
+      <!-- Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#" class="hover:text-brand-orange transition-colors"
+          >Giới thiệu</a
+        >
+        <a href="#" class="hover:text-brand-orange transition-colors"
+          >Danh sách phòng khám</a
+        >
+        <a href="#" class="hover:text-brand-orange transition-colors"
+          >Quy trình</a
+        >
+        <a href="#" class="hover:text-brand-orange transition-colors"
+          >Phản hồi</a
+        >
+      </nav>
+      <!-- Action Button -->
+      <a
+        href="#"
+        class="bg-brand-blue text-white px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors"
+      >
+        Đặt dịch vụ
+      </a>
+    </div>
+  </header>
+</template>
+
+<style>
+.bg-brand-blue {
+  background: #2b3a63 !important;
+}
+</style>
