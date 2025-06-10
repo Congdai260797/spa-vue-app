@@ -6,7 +6,7 @@
       <div class="overflow-hidden w-full relative h-[571px]">
         <div class="relative pb-2/3">
           <img
-            src="./../assets/image/frame_83.png"
+            src="./../../assets/image/frame_83.png"
             alt="Woman petting a dog"
             class="absolute h-full w-full object-cover rounded-lg"
           />
@@ -28,7 +28,7 @@
       <div class="overflow-hidden w-full relative h-[571px]">
         <div class="relative pb-2/3">
           <img
-            src="./../assets/image/frame_82.png"
+            src="./../../assets/image/frame_82.png"
             alt="Children with a dog"
             class="absolute h-full w-full object-cover rounded-lg"
           />

@@ -1,7 +1,3 @@
-<script setup>
-// Không cần script logic cho component này
-</script>
-
 <template>
   <footer class="bg-cream pt-2 pb-8">
     <div class="container mx-auto px-6 text-center">
@@ -59,3 +55,5 @@
     </div>
   </footer>
 </template>
+
+<script setup></script>

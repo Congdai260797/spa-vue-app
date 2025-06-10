@@ -18,7 +18,7 @@
             <div class="flex items-center space-x-4">
               <div class="rounded-full p-2">
                 <img
-                  src="./../assets/profile-2user.svg"
+                  src="./../../assets/profile-2user.svg"
                   alt="icon"
                   class="w-8 h-8"
                 />
@@ -30,7 +30,11 @@
 
             <div class="flex items-center space-x-4">
               <div class="rounded-full p-2">
-                <img src="./../assets/heart.svg" alt="icon" class="w-8 h-8" />
+                <img
+                  src="./../../assets/heart.svg"
+                  alt="icon"
+                  class="w-8 h-8"
+                />
               </div>
               <span class="text-xl font-medium"
                 >Đặt lịch nhanh chóng, tiện lợi</span
@@ -40,7 +44,7 @@
             <div class="flex items-center space-x-4">
               <div class="rounded-full p-2">
                 <img
-                  src="./../assets/like-dislike.svg"
+                  src="./../../assets/like-dislike.svg"
                   alt="icon"
                   class="w-8 h-8"
                 />
@@ -53,7 +57,7 @@
             <div class="flex items-center space-x-4">
               <div class="rounded-full p-2">
                 <img
-                  src="./../assets/call-calling.svg"
+                  src="./../../assets/call-calling.svg"
                   alt="icon"
                   class="w-8 h-8"
                 />
@@ -68,14 +72,14 @@
         <div class="lg:w-1/2 flex flex-col space-y-8">
           <div class="rounded-xl overflow-hidden shadow-lg">
             <img
-              src="./../assets/image/frame_70.png"
+              src="./../../assets/image/frame_70.png"
               alt="Female vet holding a small dog"
               class="w-full h-auto object-cover"
             />
           </div>
           <div class="rounded-xl overflow-hidden shadow-lg">
             <img
-              src="./../assets/image/frame_71.png"
+              src="./../../assets/image/frame_71.png"
               alt="Vet examining a Shiba Inu"
               class="w-full h-auto object-cover"
             />

@@ -1,7 +1,3 @@
-<script setup>
-// Không cần script logic cho component này
-</script>
-
 <template>
   <header class="bg-cream">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -11,16 +7,16 @@
       </a>
       <!-- Navigation -->
       <nav class="hidden md:flex items-center space-x-8">
-        <a href="#" class="hover:text-brand-orange transition-colors"
+        <a href="/home" class="hover:text-brand-orange transition-colors"
           >Giới thiệu</a
         >
-        <a href="#" class="hover:text-brand-orange transition-colors"
+        <a href="/articles" class="hover:text-brand-orange transition-colors"
           >Danh sách phòng khám</a
         >
-        <a href="#" class="hover:text-brand-orange transition-colors"
+        <a href="/process" class="hover:text-brand-orange transition-colors"
           >Quy trình</a
         >
-        <a href="#" class="hover:text-brand-orange transition-colors"
+        <a href="/feedback" class="hover:text-brand-orange transition-colors"
           >Phản hồi</a
         >
       </nav>
@@ -34,6 +30,8 @@
     </div>
   </header>
 </template>
+
+<script setup></script>
 
 <style>
 .bg-brand-blue {

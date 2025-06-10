@@ -7,22 +7,22 @@
       <div
         class="absolute top-[-65px] left-[-10px] w-[400px] h-[100px] rounded-full"
       >
-        <img src="./../assets/image/rectangle_4.png" alt="" />
+        <img src="./../../assets/image/rectangle_4.png" alt="" />
       </div>
 
       <div class="absolute top-[165px] left-8 w-40 h-40 rounded-full">
-        <img src="./../assets/image/rectangle_3.png" alt="" />
+        <img src="./../../assets/image/rectangle_3.png" alt="" />
       </div>
       <div
         class="absolute bottom-[-250px] left-[40%] w-[565px] h-[565px] rounded-full"
       >
-        <img src="./../assets/image/rectangle_6.png" alt="" />
+        <img src="./../../assets/image/rectangle_6.png" alt="" />
       </div>
       <div class="absolute bottom-[0px] right-[4%] rounded-full">
-        <img src="./../assets/image/rectangle_2.png" alt="" />
+        <img src="./../../assets/image/rectangle_2.png" alt="" />
       </div>
       <div class="absolute bottom-0 right-0 w-[884px] h-[570px] rounded-full">
-        <img src="./../assets/image/dog.png" alt="" />
+        <img src="./../../assets/image/dog.png" alt="" />
       </div>
     </div>
 
@@ -65,21 +65,6 @@
             </a>
           </div>
         </div>
-
-        <!-- Right Image -->
-        <!-- <div class="relative">
-            <div class="relative z-10">
-              <img 
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-t9HVw5WrTRB1hfDZ11eI11ngBYTFhX.png" 
-                alt="Woman holding a French Bulldog" 
-                class="w-full h-auto max-w-lg mx-auto"
-              />
-            </div>
-            
-            <div class="absolute top-4 right-4 w-4 h-4 bg-blue-600 rotate-45"></div>
-            <div class="absolute bottom-20 left-4 w-3 h-3 bg-yellow-400 rounded-full"></div>
-            <div class="absolute top-1/3 -right-4 w-6 h-6 bg-orange-300 rounded-full"></div>
-          </div> -->
       </div>
     </main>
   </div>
