@@ -1,17 +1,6 @@
 <template>
   <div class="bg-light-cream p-6">
     <div class="max-w-6xl mx-auto">
-      <!-- Breadcrumb Navigation -->
-      <!-- <nav class="mb-8">
-        <div class="flex items-center space-x-2 text-sm text-blue-600">
-          <a href="#" class="hover:underline">Trang chủ</a>
-          <span class="text-gray-400">•</span>
-          <a href="#" class="hover:underline">Danh sách phòng khám</a>
-          <span class="text-gray-400">•</span>
-          <span class="text-gray-600">Phòng khám Sakura Pet</span>
-        </div>
-      </nav> -->
-
       <!-- Main Content -->
       <div class="rounded-lg p-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -19,7 +8,7 @@
           <div class="flex justify-center">
             <div class="w-80 h-80 rounded-full overflow-hidden shadow-lg">
               <img
-                src="./../../assets/image/ClinicListing1.png"
+                :src="clinic.logoUrl"
                 alt="Happy Pet Veterinary Clinic"
                 class="w-full h-full object-cover"
               />
@@ -29,8 +18,8 @@
           <!-- Right Side - Clinic Information -->
           <div class="space-y-6">
             <div>
-              <h1 class="text-4xl font-bold text-gray-800 mb-4">
-                PHÒNG KHÁM SAKURA PET
+              <h1 class="text-[34px] font-bold text-gray-800 uppercase mb-4">
+                {{ clinic.clinicName }}
               </h1>
               <p class="text-lg text-gray-600 font-medium">
                 Với 12 năm kinh nghiệm
@@ -39,12 +28,7 @@
 
             <div class="text-gray-700 leading-relaxed">
               <p>
-                Petsite Care tự hào là một trong những phòng khám thú y uy tín
-                hàng đầu, chuyên cung cấp dịch vụ khám chữa bệnh, làm đẹp, và tư
-                vấn sức khỏe toàn diện cho chó mèo. Đội ngũ bác sĩ tận tâm, cơ
-                sở vật chất hiện đại, quy trình đạt tiêu chuẩn chống – tốt cả
-                nhằm mang đến trải nghiệm chăm sóc tốt nhất cho thú cưng của
-                bạn.
+                {{ clinic.clinicDescription }}
               </p>
             </div>
 
@@ -71,7 +55,15 @@
 </template>
 
 <script setup>
-// Component logic can be added here if needed
+import { ref, computed } from "vue";
+
+const props = defineProps({
+  modelValue: {
+    type: Object,
+    required: true,
+  },
+});
+const clinic = computed(() => props.modelValue);
 </script>
 
 <style scoped>

@@ -9,6 +9,8 @@
         <!-- Service Card 1: General Examination -->
         <div
           class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+          v-for="item in clinic.clinicServices"
+          :key="item.code"
         >
           <div
             class="aspect-square bg-blue-100 flex items-center justify-center"
