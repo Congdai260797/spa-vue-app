@@ -58,7 +58,7 @@
                   />
                 </svg>
                 <span class="text-sm font-medium text-gray-900"
-                  >{{ item.rating }}/5</span
+                  >{{ item.rating.toFixed(1) }}/5</span
                 >
               </div>
               <div class="flex items-center gap-1 text-sm text-gray-500">
