@@ -7,7 +7,7 @@ import Booking from './pages/booking/booking.vue';
 const routes = [
     { path: '/', component: Home },
     { path: '/booking', component: Booking },
-
+    { path: '/clinic', component: () => import('./pages/clinic/AboutClinic.vue') },
 ];
 
 // Create router instance

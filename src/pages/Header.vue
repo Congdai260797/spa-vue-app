@@ -10,7 +10,7 @@
         <a href="/home" class="hover:text-brand-orange transition-colors"
           >Giới thiệu</a
         >
-        <a href="/articles" class="hover:text-brand-orange transition-colors"
+        <a href="/clinic" class="hover:text-brand-orange transition-colors"
           >Danh sách phòng khám</a
         >
         <a href="/process" class="hover:text-brand-orange transition-colors"
