@@ -13,17 +13,29 @@
         <!-- Services list -->
         <div class="space-y-6">
           <!-- Service 1 - Detailed -->
-          <div class="flex gap-4">
+          <div
+            class="flex gap-4"
+            v-for="(item, index) in clinic.clinicServices"
+            :key="item.code"
+          >
             <div
-              class="flex-shrink-0 w-12 h-12 bg-teal-700 text-white rounded-lg flex items-center justify-center font-bold text-xl"
+              :class="{
+                'flex-shrink-0 w-12 h-12 bg-teal-700 text-white rounded-lg flex items-center justify-center font-bold text-xl':
+                  index == 0,
+                'flex-shrink-0 w-12 h-12 text-gray-600 border-b-2 border-l-2 flex items-center justify-center font-bold text-xl':
+                  index > 0,
+              }"
             >
-              1
+              {{ index + 1 }}
             </div>
             <div class="flex-1">
               <h3 class="text-xl font-semibold text-gray-800 mb-3">
-                Khám tổng quát
+                {{ item.nameService }}
               </h3>
-              <p class="text-gray-600 text-sm leading-relaxed">
+              <p
+                v-if="index == 0"
+                class="text-gray-600 text-sm leading-relaxed"
+              >
                 Dịch vụ khám tổng quát giúp phát hiện sớm các vấn đề sức khỏe
                 tiềm ẩn ở thú cưng như bệnh tiêu hóa, hô hấp, da liễu hoặc xương
                 khớp. Bác sĩ sẽ kiểm tra toàn diện từ tai, mắt, răng, tim phổi
@@ -31,62 +43,6 @@
                 cưng khỏe mạnh hơn mà còn giúp bạn yên tâm trong quá trình chăm
                 sóc mỗi ngày.
               </p>
-            </div>
-          </div>
-
-          <!-- Service 2 -->
-          <div class="flex items-center justify-center gap-4">
-            <div
-              class="flex-shrink-0 w-12 h-12 text-gray-600 border-b-2 border-l-2 flex items-center justify-center font-bold text-xl"
-            >
-              2
-            </div>
-            <div class="flex-1">
-              <h3 class="text-xl font-semibold text-gray-800">
-                Khám chuyên khoa (mắt, da, hô hấp...)
-              </h3>
-            </div>
-          </div>
-
-          <!-- Service 3 -->
-          <div class="flex gap-4 items-center justify-center">
-            <div
-              class="flex-shrink-0 w-12 h-12 text-gray-600 border-b-2 border-l-2 flex items-center justify-center font-bold text-xl"
-            >
-              3
-            </div>
-            <div class="flex-1">
-              <h3 class="text-xl font-semibold text-gray-800">
-                Tiêm phòng định kỳ
-              </h3>
-            </div>
-          </div>
-
-          <!-- Service 4 -->
-          <div class="flex gap-4 items-center justify-center">
-            <div
-              class="flex-shrink-0 w-12 h-12 text-gray-600 border-b-2 border-l-2 flex items-center justify-center font-bold text-xl"
-            >
-              4
-            </div>
-            <div class="flex-1">
-              <h3 class="text-xl font-semibold text-gray-800">
-                Spa - tắm, cắt tỉa lông
-              </h3>
-            </div>
-          </div>
-
-          <!-- Service 5 -->
-          <div class="flex gap-4 items-center justify-center">
-            <div
-              class="flex-shrink-0 w-12 h-12 text-gray-600 border-b-2 border-l-2 flex items-center justify-center font-bold text-xl"
-            >
-              5
-            </div>
-            <div class="flex-1">
-              <h3 class="text-xl font-semibold text-gray-800">
-                Siêu âm, xét nghiệm, X-quang
-              </h3>
             </div>
           </div>
         </div>
@@ -107,7 +63,15 @@
 </template>
 
 <script setup>
-// No additional logic needed for this static component
+import { ref, computed } from "vue";
+
+const props = defineProps({
+  modelValue: {
+    type: Object,
+    required: true,
+  },
+});
+const clinic = computed(() => props.modelValue);
 </script>
 
 <style scoped>
