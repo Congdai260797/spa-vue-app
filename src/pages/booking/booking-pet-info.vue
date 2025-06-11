@@ -5,6 +5,14 @@ import { ref } from 'vue';
 const selectedPet = ref('cho'); // Mặc định chọn 'Chó' giống trong hình
 const selectedService = ref(''); // Dịch vụ chưa được chọn
 const petDetails = ref(''); // Mô tả chi tiết
+
+const listTypeService = [
+  { value: 'kham_tong_quat', name: 'Khám tổng quát' },
+  { value: 'tiem_phong', name: 'Tiêm phòng' },
+  { value: 'spa_grooming', name: 'Spa & Grooming (Làm đẹp)' },
+  { value: 'phau_thuat', name: 'Phẫu thuật' },
+  { value: 'ho_sinh', name: 'Hộ sinh' }
+];
 </script>
 
 <template>
@@ -23,11 +31,13 @@ const petDetails = ref(''); // Mô tả chi tiết
           class="w-[480px] border-2 border-[#103559] px-[24px] py-[14px] rounded-xl focus:outline-none focus:border-blue-600 transition-colors"
         >
           <option disabled value="">Chọn loại dịch vụ</option>
-          <option value="kham_tong_quat">Khám tổng quát</option>
-          <option value="tiem_phong">Tiêm phòng</option>
-          <option value="spa_grooming">Spa & Grooming (Làm đẹp)</option>
-          <option value="phau_thuat">Phẫu thuật</option>
-          <option value="ho_sinh">Hộ sinh</option>
+          <option
+            v-for="service in listTypeService"
+            :key="service.value"
+            :value="service.value"
+          >
+            {{ service.name }}
+          </option>
         </select>
       </div>
       <div class="label mt-[24px]">3. Tình trạng chi tiết thú cưng của bạn</div>
