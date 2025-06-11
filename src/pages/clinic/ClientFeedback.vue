@@ -12,13 +12,13 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[140px]">
       <!-- Testimonial Card Loop -->
       <div
-        v-for="testimonial in testimonials"
-        :key="testimonial.id"
+        v-for="item in clientFeedbacks"
+        :key="item.id"
         class="relative bg-[#FEF3E0] rounded-2xl shadow-md p-4 pt-6 max-w-sm"
       >
         <!-- Profile Picture -->
         <img
-          :src="testimonial.image"
+          :src="item.image"
           alt="Customer photo"
           class="absolute top-12 left-1/2 -translate-x-1/2 lg:top-16 lg:left-[-20px] lg:-translate-x-8 w-32 h-32 rounded-full border-4 border-white object-cover shadow-lg"
         />
@@ -45,7 +45,7 @@
           <p
             class="text-[#003C43] text-[14px] italic text-base leading-relaxed"
           >
-            "{{ testimonial.quote }}"
+            "{{ item.comment }}"
           </p>
 
           <!-- Divider -->
@@ -54,7 +54,7 @@
           <!-- Customer Info -->
           <div>
             <span class="text-[16px] font-bold text-lg text-[#003C43]">
-              {{ testimonial.name }}
+              {{ item.userName }}
             </span>
             <div class="flex items-center mt-1 text-gray-500">
               <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -64,7 +64,7 @@
                   clip-rule="evenodd"
                 />
               </svg>
-              <p class="text-[14px]">{{ testimonial.location }}</p>
+              <p class="text-[14px]">{{ item.location }}</p>
             </div>
           </div>
         </div>
@@ -74,41 +74,46 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch, computed } from "vue";
 
 import bannerImage1 from "./../../assets/image/Ellipse1.png";
 import bannerImage2 from "./../../assets/image/Ellipse2.png";
 import bannerImage3 from "./../../assets/image/Ellipse3.png";
 
-const image1 = ref(bannerImage1);
-const image2 = ref(bannerImage2);
-const image3 = ref(bannerImage3);
+const props = defineProps({
+  modelValue: {
+    type: Object,
+    required: true,
+  },
+});
 
-const testimonials = ref([
-  {
-    id: 1,
-    name: "Nguyễn Văn A",
-    location: "Mỹ Đình, Hà Nội",
-    quote:
-      "Phòng khám nhiệt tình và chu đáo với chó của khách hàng. Đội ngũ bác sĩ rất có tâm.",
-    image: image1.value,
-  },
-  {
-    id: 2,
-    name: "Mai Thùy Nga",
-    location: "Thanh Xuân, Hà Nội",
-    quote:
-      "Trang thiết bị hiện đại, khu lễ tân sạch sẽ và rất thân thiện. Mình sẽ quay lại tiếp!",
-    image: image2.value,
-  },
-  {
-    id: 3,
-    name: "Nguyễn Nami",
-    location: "Hoàn Kiếm, Hà Nội",
-    quote: "Chó nhà mình bị tiêu chảy nặng, khám ở đây 2 hôm đã đỡ.",
-    image: image3.value,
-  },
-]);
+const data = computed(() => props.modelValue);
+
+const listImage = [bannerImage1, bannerImage2, bannerImage3];
+const listLocation = [
+  "Mỹ Đình, Hà Nội",
+  "Thanh Xuân, Hà Nội",
+  "Hoàn Kiếm, Hà Nội",
+];
+
+const clientFeedbacks = ref([]);
+
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    if (newValue && newValue.ratings) {
+      clientFeedbacks.value = newValue.ratings
+        .slice(0, 3)
+        .map((item, index) => ({
+          image: listImage[index] || "",
+          rating: item.rating,
+          comment: item.comment,
+          userName: item.userName,
+          location: listLocation[index] || "",
+        }));
+    }
+  }
+);
 </script>
 
 <style scoped>

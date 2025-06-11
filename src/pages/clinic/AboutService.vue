@@ -15,7 +15,7 @@
           <!-- Service 1 - Detailed -->
           <div
             class="flex gap-4"
-            v-for="(item, index) in clinic.clinicServices"
+            v-for="(item, index) in data.clinicServices"
             :key="item.code"
           >
             <div
@@ -71,9 +71,9 @@ const props = defineProps({
     required: true,
   },
 });
-const clinic = computed(() => props.modelValue);
-</script>
 
+const data = computed(() => props.modelValue);
+</script>
 <style scoped>
 /* Additional custom styles if needed */
 </style>
