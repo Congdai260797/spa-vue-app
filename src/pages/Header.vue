@@ -22,7 +22,7 @@
       </nav>
       <!-- Action Button -->
       <a
-        href="#"
+        href="booking"
         class="bg-brand-blue text-white px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors"
       >
         Đặt dịch vụ

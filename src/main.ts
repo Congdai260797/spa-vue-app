@@ -2,9 +2,12 @@ import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import Home from './pages/home/Home.vue';
+import Booking from './pages/booking/booking.vue';
 
 const routes = [
     { path: '/', component: Home },
+    { path: '/booking', component: Booking },
+
 ];
 
 // Create router instance
