@@ -5,6 +5,7 @@ import Home from './pages/home/Home.vue';
 
 const routes = [
     { path: '/', component: Home },
+    { path: '/clinic', component: () => import('./pages/clinic/AboutClinic.vue') },
 ];
 
 // Create router instance

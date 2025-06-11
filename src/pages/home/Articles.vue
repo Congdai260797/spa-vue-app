@@ -5,7 +5,7 @@
         class="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-16"
       >
         <div class="lg:w-1/2 mb-12 lg:mb-0">
-          <h1 class="text-4xl font-bold mb-6 leading-tight">
+          <h1 class="text-4xl font-bold mb-6 leading-tight text-[48px]">
             Chăm sóc thú cưng của bạn chưa bao giờ dễ dàng đến thế!
           </h1>
           <p class="text-lg text-gray-600 mb-8">
