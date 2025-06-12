@@ -7,22 +7,14 @@
       </a>
       <!-- Navigation -->
       <nav class="hidden md:flex items-center space-x-8">
-        <a href="/home" class="hover:text-brand-orange transition-colors"
-          >Giới thiệu</a
-        >
-        <a href="/clinic" class="hover:text-brand-orange transition-colors"
-          >Danh sách phòng khám</a
-        >
-        <a href="/process" class="hover:text-brand-orange transition-colors"
-          >Quy trình</a
-        >
-        <a href="/feedback" class="hover:text-brand-orange transition-colors"
-          >Phản hồi</a
-        >
+        <a href="/home" class="hover:text-brand-orange transition-colors">Giới thiệu</a>
+        <a href="/clinic" class="hover:text-brand-orange transition-colors">Danh sách phòng khám</a>
+        <a href="/process" class="hover:text-brand-orange transition-colors">Quy trình</a>
+        <a href="/feedback" class="hover:text-brand-orange transition-colors">Phản hồi</a>
       </nav>
       <!-- Action Button -->
       <a
-        href="booking"
+        href="/booking"
         class="bg-brand-blue text-white px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors"
       >
         Đặt dịch vụ
@@ -34,7 +26,7 @@
 <script setup></script>
 
 <style>
-.bg-brand-blue {
-  background: #2b3a63 !important;
-}
+  .bg-brand-blue {
+    background: #2b3a63 !important;
+  }
 </style>
