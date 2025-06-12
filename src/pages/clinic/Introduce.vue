@@ -21,9 +21,7 @@
               <h1 class="text-[34px] font-bold text-gray-800 uppercase mb-4">
                 {{ clinic.clinicName }}
               </h1>
-              <p class="text-lg text-gray-600 font-medium">
-                Với 12 năm kinh nghiệm
-              </p>
+              <p class="text-lg text-gray-600 font-medium">Với 12 năm kinh nghiệm</p>
             </div>
 
             <div class="text-gray-700 leading-relaxed">
@@ -43,6 +41,7 @@
               <a
                 href="#"
                 class="px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors border border-brand-blue text-brand-blue"
+                @click="showServiceList"
               >
                 Xem bảng giá
               </a>
@@ -52,20 +51,40 @@
       </div>
     </div>
   </div>
+  <ServiceModal v-model="clinic" ref="serviceModalRef" />
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+  import { ref, computed } from 'vue';
+  import ServiceModal from './ModalClinic.vue';
 
-const props = defineProps({
-  modelValue: {
-    type: Object,
-    required: true,
-  },
-});
-const clinic = computed(() => props.modelValue);
+  const serviceModalRef = ref(null);
+
+  const props = defineProps({
+    modelValue: {
+      type: Object,
+      required: true,
+    },
+  });
+  const clinic = computed(() => props.modelValue);
+
+  const showServiceList = () => {
+    if (serviceModalRef.value) {
+      serviceModalRef.value.openModal();
+    }
+  };
+
+  // watch(
+  //   () => props.modelValue,
+  //   (newValue) => {
+  //     console.log(newValue);
+  //     // if (newValue) {
+  //     //   clinic.value = newValue;
+  //     // }
+  //   }
+  // );
 </script>
 
 <style scoped>
-/* Additional custom styles if needed */
+  /* Additional custom styles if needed */
 </style>
