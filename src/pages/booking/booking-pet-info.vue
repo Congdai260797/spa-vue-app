@@ -8,33 +8,48 @@
     { value: 'vaccination', name: 'Tiêm phòng & phòng ngừa' },
     { value: 'treatment', name: 'Khám và điều trị' },
   ];
+
+  const petOptions = [
+  {
+    value: 'dog',
+    label: 'Chó',
+    icon: 'src/assets/dog.svg',
+  },
+  {
+    value: 'cat',
+    label: 'Mèo',
+    icon: 'src/assets/cat.svg',
+  },
+  {
+    value: 'other',
+    label: 'Khác',
+    icon: 'src/assets/paw.svg',
+  },
+]
+
 </script>
 
 <template>
   <div class="w-full flex justify-between">
     <div class="input-section flex-grow">
-      <div class="label">1. Thú cưng bạn cần thăm khám là ?</div>
-      <div class="mt-[24px] w-full h-[48px] flex justify-start gap-[24px]">
+      <div class="label mb-2">1. Thú cưng bạn cần thăm khám là?</div>
+      <div class="flex gap-[24px]">
         <button
-          class="select-button"
-          :class="{ 'bg-[#103559] text-white': bookingPetStore.petType === 'cho' }"
-          @click="bookingPetStore.petType = 'cho'"
+          v-for="pet in petOptions"
+          :key="pet.value"
+          @click="bookingPetStore.petType = pet.value"
+          class="flex items-center gap-2 px-4 py-3 w-[140px] border-2 rounded-xl transition-all justify-center"
+          :class="{
+            'bg-[#103559] text-white border-[#103559]': bookingPetStore.petType === pet.value,
+            'bg-white text-[#103559] border-[#D9D9D9] hover:bg-gray-50': bookingPetStore.petType !== pet.value
+          }"
         >
-          Chó
-        </button>
-        <button
-          class="select-button"
-          :class="{ 'bg-[#103559] text-white': bookingPetStore.petType === 'meo' }"
-          @click="bookingPetStore.petType = 'meo'"
-        >
-          Mèo
-        </button>
-        <button
-          class="select-button"
-          :class="{ 'bg-[#103559] text-white': bookingPetStore.petType === 'khac' }"
-          @click="bookingPetStore.petType = 'khac'"
-        >
-          Khác
+          <img
+            :src="pet.icon"
+            class="w-5 h-5"
+            :class="{ 'filter brightness-0 invert': bookingPetStore.petType === pet.value }"
+          />
+          <span class="text-[16px] font-medium">{{ pet.label }}</span>
         </button>
       </div>
       <div class="label mt-[24px]">2. Chọn dịch vụ thú cưng</div>
