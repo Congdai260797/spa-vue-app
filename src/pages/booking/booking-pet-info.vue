@@ -22,7 +22,8 @@
           class="flex items-center gap-2 px-4 py-3 w-[140px] border-2 rounded-xl transition-all justify-center"
           :class="{
             'bg-[#103559] text-white border-[#103559]': bookingPetStore.petType === 'dog',
-            'bg-white text-[#103559] border-[#D9D9D9] hover:bg-gray-50': bookingPetStore.petType !== 'dog'
+            'bg-white text-[#103559] border-[#D9D9D9] hover:bg-gray-50':
+              bookingPetStore.petType !== 'dog',
           }"
         >
           <img
@@ -39,7 +40,8 @@
           class="flex items-center gap-2 px-4 py-3 w-[140px] border-2 rounded-xl transition-all justify-center"
           :class="{
             'bg-[#103559] text-white border-[#103559]': bookingPetStore.petType === 'cat',
-            'bg-white text-[#103559] border-[#D9D9D9] hover:bg-gray-50': bookingPetStore.petType !== 'cat'
+            'bg-white text-[#103559] border-[#D9D9D9] hover:bg-gray-50':
+              bookingPetStore.petType !== 'cat',
           }"
         >
           <img
@@ -56,7 +58,8 @@
           class="flex items-center gap-2 px-4 py-3 w-[140px] border-2 rounded-xl transition-all justify-center"
           :class="{
             'bg-[#103559] text-white border-[#103559]': bookingPetStore.petType === 'other',
-            'bg-white text-[#103559] border-[#D9D9D9] hover:bg-gray-50': bookingPetStore.petType !== 'other'
+            'bg-white text-[#103559] border-[#D9D9D9] hover:bg-gray-50':
+              bookingPetStore.petType !== 'other',
           }"
         >
           <img
@@ -96,7 +99,12 @@
 
     <!-- Hình minh họa -->
     <div class="image-section self-center">
-      <img width="300" height="300" src="./../../assets/image/booking-logo.png" alt="Booking illustration" />
+      <img
+        width="300"
+        height="300"
+        src="./../../assets/image/booking-logo.png"
+        alt="Booking illustration"
+      />
     </div>
   </div>
 </template>

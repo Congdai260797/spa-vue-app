@@ -2,6 +2,7 @@
   <div class="min-h-screen bg-light-cream">
     <AppHeader />
     <main>
+      <!-- <Breadcrumb ref="breadcrumb" /> -->
       <router-view />
     </main>
     <Newsletter />
@@ -15,6 +16,7 @@
   import Newsletter from './pages/Newsletter.vue';
 
   import AppFooter from './pages/AppFooter.vue';
+  // import Breadcrumb from './shared/components/Breadcrumb.vue';
 
   const isMenuOpen = ref(false);
   const isCategoriesOpen = ref(false);

@@ -8,8 +8,9 @@
     <div class="container mx-auto p-4">
       <div class="max-w-7xl mx-auto">
         <!-- Clinic Cards Grid -->
+        <Breadcrumb ref="breadcrumb" class="bg-light-cream mb-4" />
         <div
-          class="p-4 flex flex-col md:flex-row items-start md:items-center justify-between mb-10"
+          class="p-2 flex flex-col md:flex-row items-start md:items-center justify-between mb-10"
         >
           <div class="space-y-1">
             <p class="text-gray-700 text-[16px] text-sm mb-4">
@@ -21,6 +22,7 @@
               Tìm kiếm ngay
             </h3>
           </div>
+
           <div class="relative mt-3 md:mt-0">
             <select
               v-model="selectedValue"
@@ -116,6 +118,7 @@
   import { useRouter } from 'vue-router';
   import ClinicService from './clinic.service';
   import { useRoute } from 'vue-router';
+  import Breadcrumb from '../../shared/components/Breadcrumb.vue';
 
   const clinicService = new ClinicService();
 

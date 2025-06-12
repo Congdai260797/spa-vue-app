@@ -1,4 +1,5 @@
 <template>
+  <Breadcrumb ref="breadcrumb" class="bg-light-cream mb-4 mt-4" />
   <div class="bg-light-cream p-6">
     <div class="max-w-6xl mx-auto">
       <!-- Main Content -->
@@ -57,6 +58,7 @@
 <script setup>
   import { ref, computed } from 'vue';
   import ServiceModal from './ModalClinic.vue';
+  import Breadcrumb from '../../shared/components/Breadcrumb.vue';
 
   const serviceModalRef = ref(null);
 

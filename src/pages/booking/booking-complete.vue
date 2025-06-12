@@ -1,5 +1,11 @@
 <script setup>
   import { useRouter } from 'vue-router';
+  import { useBookingPetStore } from './../../shared/stores/bookingStore';
+  import BookingService from './booking.service';
+
+  const bookingPetStore = useBookingPetStore();
+
+  const bookingService = new BookingService();
 
   const router = useRouter();
 
@@ -7,9 +13,27 @@
     router.push('/');
   }
 
-  function ticketDetail() {
-    router.push('/booking/ticket-info');
-  }
+  const ticketDetail = async () => {
+    const request = {
+      petType: bookingPetStore.petType,
+      serviceType: bookingPetStore.serviceType,
+      petState: bookingPetStore.petState,
+      userName: bookingPetStore.userName,
+      email: bookingPetStore.email,
+      phoneNumber: bookingPetStore.phoneNumber,
+      selectedCity: bookingPetStore.selectedCity,
+      selectedDistrict: bookingPetStore.selectedDistrict,
+      selectedWard: bookingPetStore.selectedWard,
+      clientAddress: bookingPetStore.clientAddress,
+      dateReservation: bookingPetStore.dateReservation,
+      clinicId: bookingPetStore.clinicId,
+    };
+    console.log(request);
+    const response = await bookingService.getBookingData(request);
+    if (response.success) {
+      router.push('/booking/ticket-info');
+    }
+  };
 </script>
 
 <template>
@@ -27,17 +51,21 @@
 
     <!-- api đổ data vào đây -->
     <div class="w-full min-h-[160px] mt-[40px] px-[24px] flex justify-between">
-      <div class="w-[410px] h-[160px] box-shadow pt-[8px] px-[16px] text-[#103559]">
+      <div class="w-[410px] box-shadow py-[8px] px-[16px] text-[#103559]">
         <div class="w-full h-[24px] text-[20px] font-bold">Thông tin khách hàng</div>
-        <div class="mt-[8px] w-full h-[24px] text-[16px]">Họ tên :</div>
-        <div class="w-full h-[24px] text-[16px]">Số điện thoại :</div>
-        <div class="w-full h-[24px] text-[16px]">Địa chỉ :</div>
+        <div class="mt-[8px] w-full h-[24px] text-[16px]">
+          Họ tên : {{ bookingPetStore.userName }}
+        </div>
+        <div class="w-full h-[24px] text-[16px]">
+          Số điện thoại : {{ bookingPetStore.phoneNumber }}
+        </div>
+        <div class="w-full h-[24px] text-[16px]">Địa chỉ : {{ bookingPetStore.clientAddress }}</div>
       </div>
-      <div class="w-[410px] h-[160px] box-shadow pt-[8px] px-[16px] text-[#103559]">
+      <div class="w-[410px] box-shadow py-[8px] px-[16px] text-[#103559]">
         <div class="w-full h-[24px] text-[20px] font-bold">Thông tin lịch khám</div>
         <div class="mt-[8px] w-full h-[24px] text-[16px]">Lịch hẹn :</div>
-        <div class="w-full h-[24px] text-[16px]">Phòng khám :</div>
-        <div class="w-full h-[24px] text-[16px]">Địa chỉ :</div>
+        <div class="w-full text-[16px]">Phòng khám : {{ bookingPetStore.clinicName }}</div>
+        <div class="w-full text-[16px]">Địa chỉ : {{ bookingPetStore.clinicAddress }}</div>
       </div>
     </div>
 

@@ -1,0 +1,18 @@
+import { environment } from '../../environments/environment';
+import { BaseService } from '../../shared/interceptor/base.service';
+
+export default class BookingService extends BaseService {
+  publicApiUrl: string = `${environment.endpoint}`;
+
+  constructor() {
+    super();
+  }
+
+  async getBookingData(model: any): Promise<any> {
+    return this.post(`${this.publicApiUrl}/user/reservation`, model);
+  }
+
+  async detailClinic(): Promise<any> {
+    return this.get(`${this.publicApiUrl}/user/clinic?orderBy=&orderType=ASC&county=Cầu Giấy`);
+  }
+}
