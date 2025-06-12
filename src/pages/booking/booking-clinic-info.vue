@@ -1,4 +1,28 @@
-<script setup></script>
+<script setup>
+  import { ref } from 'vue';
+  import { onMounted } from 'vue';
+  import BookingService from './booking.service';
+
+  import { useBookingPetStore } from './../../shared/stores/bookingStore';
+
+  const bookingPetStore = useBookingPetStore();
+
+  const bookingService = new BookingService();
+
+  const listClinic = ref([]);
+
+  onMounted(async () => {
+    const response = await bookingService.detailClinic();
+    listClinic.value = response.data.clinics;
+    console.log(listClinic.value);
+  });
+
+  const addClinic = (clinic) => {
+    bookingPetStore.clinicId = clinic.clinicId;
+    bookingPetStore.clinicName = clinic.clinicName;
+    bookingPetStore.clinicAddress = clinic.clinicAddress;
+  };
+</script>
 
 <template>
   <div class="w-full">
@@ -12,9 +36,20 @@
     </div>
 
     <div class="list-clinic">
-      <div class="w-full h-[160px] flex items-center justify-start">
+      <div
+        class="w-full h-[160px] flex items-center justify-start mb-6"
+        v-for="clinic in listClinic"
+        :key="clinic.id"
+      >
         <div class="block_1 h-full flex items-center border-r border-[#C9CFD4]">
-          <img class="w-[160px] h-[160px]" src="./../../assets/image/ClinicListing1.png" alt="" />
+          <div class="w-[160px] h-full flex justify-center items-center object-cover">
+            <img
+              class="w-[160px] h-[160px] object-cover rounded-[10px]"
+              :src="clinic.logoUrl"
+              alt=""
+            />
+          </div>
+
           <div class="w-[300px] px-[24px]">
             <div class="w-full h-fit text-[#103559] text-[18px] font-bold leading-[24px]">
               Phòng khám thú y Happy Pet
@@ -23,7 +58,15 @@
               Dịch vụ: Khám tổng quát, tiêm phòng, phẫu thuật, spa & grooming
             </div>
             <div class="mt-[8px] flex justify-between items-center">
-              <img src="./../../assets/image/star.png" alt="star" />
+              <div class="flex items-center gap-[2px]">
+                {{ clinic?.rating.toFixed(1) }}
+                <svg class="mt-1 w-4 h-4 text-brand-blue fill-current" viewBox="0 0 20 20">
+                  <path
+                    d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"
+                  />
+                </svg>
+              </div>
+
               <span class="text-[#103559]">Khoảng cách: <span class="font-bold">3km</span></span>
             </div>
           </div>
@@ -41,6 +84,7 @@
         <div class="block_3 align-center w-[200px] px-[24px]">
           <button
             class="w-[140px] h-[40px] border border-[#103559] bg-[#103559] text-white text-[16px] font-bold"
+            @click="addClinic(clinic)"
           >
             Đặt lịch khám
           </button>

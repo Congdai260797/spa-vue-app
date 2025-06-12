@@ -66,6 +66,9 @@ button:focus-visible {
   padding: 2rem;
   text-align: center;
 } */
+
+/* .breadcrumb Ơ */
+
 .bg-cream {
   background: #FBEED4 !important;
 }
@@ -79,7 +82,7 @@ button:focus-visible {
 }
 
 .text-brand-blue {
-  color: #2b3a63 ;
+  color: #2b3a63 !important;
 }
 
 .text-black-blue {

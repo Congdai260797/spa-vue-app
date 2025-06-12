@@ -19,16 +19,24 @@
           :key="item.id"
         >
           <div class="relative">
-            <img :src="item.image" :alt="item.clinicName" class="w-full h-72 object-cover" />
-          </div>
-          <div class="p-4">
-            <h3
-              class="font-semibold text-gray-900 mb-2 cursor-pointer"
+            <img
+              :src="item.image"
+              :alt="item.clinicName"
+              class="w-full h-72 object-cover cursor-pointer"
               @click="goToPage(item.clinicId)"
-            >
-              {{ item.clinicName }}
-            </h3>
-            <p class="text-sm text-gray-600 mb-3">Dịch vụ: {{ item.clinicSpecialties }}</p>
+            />
+          </div>
+          <div class="flex flex-col justify-between p-4 h-[180px]">
+            <div class="flex flex-col">
+              <h3
+                class="font-semibold text-gray-900 h-[48px] mb-2 cursor-pointer"
+                @click="goToPage(item.clinicId)"
+              >
+                {{ item.clinicName }}
+              </h3>
+              <p class="text-sm text-gray-600 mb-3">Dịch vụ: {{ item.clinicSpecialties }}</p>
+            </div>
+
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-1">
                 <svg class="w-4 h-4 text-brand-blue fill-current" viewBox="0 0 20 20">

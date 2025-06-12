@@ -4,11 +4,20 @@
   import bookingClientInfo from './booking-client-info.vue';
   import bookingClinicInfo from './booking-clinic-info.vue';
   import bookingComplete from './booking-complete.vue';
+  // import { useBookingStore } from '../../shared/stores/bookingStore';
+  import { useBookingPetStore } from './../../shared/stores/bookingStore';
+  import locations from './../../data/location.json';
+
+  const bookingPetStore = useBookingPetStore();
 
   const status = ref(1);
+  // const bookingStore = new useBookingStore();
 
   function nextStep() {
     status.value += 1;
+    if (status.value === 4) {
+      console.log(bookingPetStore);
+    }
   }
 
   function prevStep() {
