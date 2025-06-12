@@ -42,7 +42,7 @@
             <p
               class="leading-relaxed max-w-lg font-semibold text-[16px] text-black-blue"
             >
-              Petstic Care giúp bạn kết nối với các phòng khám thú y uy tín,
+              Petstie Care giúp bạn kết nối với các phòng khám thú y uy tín,
               theo dõi sức khỏe thú cưng và đặt lịch chỉ trong vài bước đơn
               giản.
             </p>

@@ -9,7 +9,7 @@
             Chăm sóc thú cưng của bạn chưa bao giờ dễ dàng đến thế!
           </h1>
           <p class="text-lg text-gray-600 mb-8">
-            Petsie Care là nền tảng giúp chủ nuôi tìm kiếm phòng khám thú y chất
+            Petstie Care là nền tảng giúp chủ nuôi tìm kiếm phòng khám thú y chất
             lượng, đặt lịch khám, nhắc nhở lịch tiêm phòng và tư vấn sức khỏe
             thú cưng mọi lúc, mọi nơi.
           </p>
