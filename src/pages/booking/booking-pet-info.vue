@@ -13,17 +13,17 @@
   {
     value: 'dog',
     label: 'Chó',
-    icon: 'src/assets/dog.svg',
+    icon: 'src/assets/image/bone.png',
   },
   {
     value: 'cat',
     label: 'Mèo',
-    icon: 'src/assets/cat.svg',
+    icon: 'src/assets/image/cat.png',
   },
   {
     value: 'other',
     label: 'Khác',
-    icon: 'src/assets/paw.svg',
+    icon: 'src/assets/image/paw.png',
   },
 ]
 
