@@ -1,28 +1,26 @@
 <script setup>
-import { ref } from "vue";
+  import { ref } from 'vue';
 
-const email = ref("");
+  const email = ref('');
 
-function handleSubmit() {
-  if (email.value) {
-    alert(`Cảm ơn bạn đã đăng ký với email: ${email.value}`);
-    email.value = "";
-  } else {
-    alert("Vui lòng nhập email của bạn.");
+  function handleSubmit() {
+    if (email.value) {
+      alert(`Cảm ơn bạn đã đăng ký với email: ${email.value}`);
+      email.value = '';
+    } else {
+      alert('Vui lòng nhập email của bạn.');
+    }
   }
-}
 </script>
 
 <template>
-  <section class="py-16 bg-cream rounded-tl-[40px] rounded-tr-[40px]">
+  <section class="py-10 bg-cream rounded-tl-[40px] rounded-tr-[40px]">
     <div class="container mx-auto px-6">
       <div
         class="mx-auto bg-dark-blue rounded-2xl p-8 md:p-10 text-white flex flex-col md:flex-row justify-between items-center gap-8"
       >
         <div class="text-center md:text-left">
-          <h2 class="text-2xl md:text-3xl font-bold">
-            Nhận thông báo từ Petstie Care
-          </h2>
+          <h2 class="text-2xl md:text-3xl font-bold">Nhận thông báo từ Petstie Care</h2>
           <p class="text-gray-300 mt-1">ngay từ hôm nay</p>
         </div>
         <form @submit.prevent="handleSubmit" class="w-full max-w-md">
@@ -47,10 +45,10 @@ function handleSubmit() {
 </template>
 
 <style scoped>
-.bg-cream {
-  background: #fbeed4 !important;
-}
-.bg-dark-blue {
-  background-color: #103559;
-}
+  .bg-cream {
+    background: #fbeed4 !important;
+  }
+  .bg-dark-blue {
+    background-color: #103559;
+  }
 </style>
