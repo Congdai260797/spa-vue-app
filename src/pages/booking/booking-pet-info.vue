@@ -8,50 +8,67 @@
     { value: 'vaccination', name: 'Tiêm phòng & phòng ngừa' },
     { value: 'treatment', name: 'Khám và điều trị' },
   ];
-
-  const petOptions = [
-  {
-    value: 'dog',
-    label: 'Chó',
-    icon: 'src/assets/image/bone.png',
-  },
-  {
-    value: 'cat',
-    label: 'Mèo',
-    icon: 'src/assets/image/cat.png',
-  },
-  {
-    value: 'other',
-    label: 'Khác',
-    icon: 'src/assets/image/paw.png',
-  },
-]
-
 </script>
 
 <template>
   <div class="w-full flex justify-between">
     <div class="input-section flex-grow">
+      <!-- Step 1: Chọn thú cưng -->
       <div class="label mb-2">1. Thú cưng bạn cần thăm khám là?</div>
       <div class="flex gap-[24px]">
+        <!-- Dog -->
         <button
-          v-for="pet in petOptions"
-          :key="pet.value"
-          @click="bookingPetStore.petType = pet.value"
+          @click="bookingPetStore.petType = 'dog'"
           class="flex items-center gap-2 px-4 py-3 w-[140px] border-2 rounded-xl transition-all justify-center"
           :class="{
-            'bg-[#103559] text-white border-[#103559]': bookingPetStore.petType === pet.value,
-            'bg-white text-[#103559] border-[#D9D9D9] hover:bg-gray-50': bookingPetStore.petType !== pet.value
+            'bg-[#103559] text-white border-[#103559]': bookingPetStore.petType === 'dog',
+            'bg-white text-[#103559] border-[#D9D9D9] hover:bg-gray-50': bookingPetStore.petType !== 'dog'
           }"
         >
           <img
-            :src="pet.icon"
+            src="./../../assets/image/bone.png"
             class="w-5 h-5"
-            :class="{ 'filter brightness-0 invert': bookingPetStore.petType === pet.value }"
+            :class="{ 'filter brightness-0 invert': bookingPetStore.petType === 'dog' }"
           />
-          <span class="text-[16px] font-medium">{{ pet.label }}</span>
+          <span class="text-[16px] font-medium">Chó</span>
+        </button>
+
+        <!-- Cat -->
+        <button
+          @click="bookingPetStore.petType = 'cat'"
+          class="flex items-center gap-2 px-4 py-3 w-[140px] border-2 rounded-xl transition-all justify-center"
+          :class="{
+            'bg-[#103559] text-white border-[#103559]': bookingPetStore.petType === 'cat',
+            'bg-white text-[#103559] border-[#D9D9D9] hover:bg-gray-50': bookingPetStore.petType !== 'cat'
+          }"
+        >
+          <img
+            src="./../../assets/image/cat.png"
+            class="w-5 h-5"
+            :class="{ 'filter brightness-0 invert': bookingPetStore.petType === 'cat' }"
+          />
+          <span class="text-[16px] font-medium">Mèo</span>
+        </button>
+
+        <!-- Other -->
+        <button
+          @click="bookingPetStore.petType = 'other'"
+          class="flex items-center gap-2 px-4 py-3 w-[140px] border-2 rounded-xl transition-all justify-center"
+          :class="{
+            'bg-[#103559] text-white border-[#103559]': bookingPetStore.petType === 'other',
+            'bg-white text-[#103559] border-[#D9D9D9] hover:bg-gray-50': bookingPetStore.petType !== 'other'
+          }"
+        >
+          <img
+            src="./../../assets/image/paw.png"
+            class="w-5 h-5"
+            :class="{ 'filter brightness-0 invert': bookingPetStore.petType === 'other' }"
+          />
+          <span class="text-[16px] font-medium">Khác</span>
         </button>
       </div>
+
+      <!-- Step 2: Chọn dịch vụ -->
       <div class="label mt-[24px]">2. Chọn dịch vụ thú cưng</div>
       <div class="mt-[24px]">
         <select
@@ -64,6 +81,8 @@
           </option>
         </select>
       </div>
+
+      <!-- Step 3: Tình trạng thú cưng -->
       <div class="label mt-[24px]">3. Tình trạng chi tiết thú cưng của bạn</div>
       <div class="mt-[24px]">
         <textarea
@@ -74,8 +93,10 @@
         ></textarea>
       </div>
     </div>
+
+    <!-- Hình minh họa -->
     <div class="image-section self-center">
-      <img width="300" height="300" src="./../../assets/image/booking-logo.png" alt="" />
+      <img width="300" height="300" src="./../../assets/image/booking-logo.png" alt="Booking illustration" />
     </div>
   </div>
 </template>
