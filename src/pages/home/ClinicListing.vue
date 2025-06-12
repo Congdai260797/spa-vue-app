@@ -9,12 +9,7 @@
           class="px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors border border-brand-blue text-brand-blue flex items-center justify-center gap-2"
         >
           Xem thêm
-          <svg
-            class="w-4 h-4 text-gray-700"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+          <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -41,18 +36,17 @@
             />
           </div>
           <div class="p-4">
-            <h3 class="font-semibold text-gray-900 mb-2">
+            <h3
+              class="font-semibold text-gray-900 mb-2 cursor-pointer"
+              @click="goToPage(item.clinicId)"
+            >
               {{ item.clinicName }}
             </h3>
-            <p class="text-sm text-gray-600 mb-3">
-              Dịch vụ: {{ item.clinicSpecialties }}
-            </p>
+
+            <p class="text-sm text-gray-600 mb-3">Dịch vụ: {{ item.clinicSpecialties }}</p>
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-1">
-                <svg
-                  class="w-4 h-4 text-brand-blue fill-current"
-                  viewBox="0 0 20 20"
-                >
+                <svg class="w-4 h-4 text-brand-blue fill-current" viewBox="0 0 20 20">
                   <path
                     d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"
                   />
@@ -62,12 +56,7 @@
                 >
               </div>
               <div class="flex items-center gap-1 text-sm text-gray-500">
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -92,17 +81,24 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+  import { ref, computed } from 'vue';
+  import { useRouter } from 'vue-router';
 
-const props = defineProps({
-  modelValue: {
-    type: Array,
-    required: true,
-  },
-});
-const clinics = computed(() => props.modelValue);
+  const router = useRouter();
+
+  const props = defineProps({
+    modelValue: {
+      type: Array,
+      required: true,
+    },
+  });
+  const clinics = computed(() => props.modelValue);
+
+  const goToPage = (clinicId) => {
+    router.push({ name: 'Clinic', params: { clinicId } });
+  };
 </script>
 
 <style scoped>
-/* Additional custom styles if needed */
+  /* Additional custom styles if needed */
 </style>

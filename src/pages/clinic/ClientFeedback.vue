@@ -1,12 +1,10 @@
 <template>
   <!-- Main Container -->
   <div
-    class="bg-[#FFFBF5] w-full flex flex-col items-center justify-center font-sans mt-10 mb-10 p-8"
+    class="bg-light-cream w-full flex flex-col items-center justify-center font-sans mt-10 mb-10 p-8"
   >
     <!-- Title -->
-    <h2 class="text-4xl md:text-5xl font-bold text-brand-blue mb-20">
-      PHẢN HỒI CỦA KHÁCH HÀNG
-    </h2>
+    <h2 class="text-4xl md:text-5xl font-bold text-brand-blue mb-20">PHẢN HỒI CỦA KHÁCH HÀNG</h2>
 
     <!-- Testimonials Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[140px]">
@@ -24,9 +22,7 @@
         />
         <!-- Rating -->
         <div class="flex justify-start lg:justify-center mb-4">
-          <div
-            class="bg-[#2b3a63] rounded-full px-4 py-1 flex items-center gap-1"
-          >
+          <div class="bg-[#2b3a63] rounded-full px-4 py-1 flex items-center gap-1">
             <svg
               v-for="n in 5"
               :key="n"
@@ -42,9 +38,7 @@
         </div>
         <div class="w-[240px] ml-[70px]">
           <!-- Quote -->
-          <p
-            class="text-[#003C43] text-[14px] italic text-base leading-relaxed"
-          >
+          <p class="text-[#003C43] text-[14px] italic text-base leading-relaxed">
             "{{ item.comment }}"
           </p>
 
@@ -74,52 +68,46 @@
 </template>
 
 <script setup>
-import { ref, watch, computed } from "vue";
+  import { ref, watch, computed } from 'vue';
 
-import bannerImage1 from "./../../assets/image/Ellipse1.png";
-import bannerImage2 from "./../../assets/image/Ellipse2.png";
-import bannerImage3 from "./../../assets/image/Ellipse3.png";
+  import bannerImage1 from './../../assets/image/Ellipse1.png';
+  import bannerImage2 from './../../assets/image/Ellipse2.png';
+  import bannerImage3 from './../../assets/image/Ellipse3.png';
 
-const props = defineProps({
-  modelValue: {
-    type: Object,
-    required: true,
-  },
-});
+  const props = defineProps({
+    modelValue: {
+      type: Object,
+      required: true,
+    },
+  });
 
-const data = computed(() => props.modelValue);
+  const data = computed(() => props.modelValue);
 
-const listImage = [bannerImage1, bannerImage2, bannerImage3];
-const listLocation = [
-  "Mỹ Đình, Hà Nội",
-  "Thanh Xuân, Hà Nội",
-  "Hoàn Kiếm, Hà Nội",
-];
+  const listImage = [bannerImage1, bannerImage2, bannerImage3];
+  const listLocation = ['Mỹ Đình, Hà Nội', 'Thanh Xuân, Hà Nội', 'Hoàn Kiếm, Hà Nội'];
 
-const clientFeedbacks = ref([]);
+  const clientFeedbacks = ref([]);
 
-watch(
-  () => props.modelValue,
-  (newValue) => {
-    if (newValue && newValue.ratings) {
-      clientFeedbacks.value = newValue.ratings
-        .slice(0, 3)
-        .map((item, index) => ({
-          image: listImage[index] || "",
+  watch(
+    () => props.modelValue,
+    (newValue) => {
+      if (newValue && newValue.ratings) {
+        clientFeedbacks.value = newValue.ratings.slice(0, 3).map((item, index) => ({
+          image: listImage[index] || '',
           rating: item.rating,
           comment: item.comment,
           userName: item.userName,
-          location: listLocation[index] || "",
+          location: listLocation[index] || '',
         }));
+      }
     }
-  }
-);
+  );
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap");
+  @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap');
 
-.font-sans {
-  font-family: "Be Vietnam Pro", sans-serif;
-}
+  .font-sans {
+    font-family: 'Be Vietnam Pro', sans-serif;
+  }
 </style>
