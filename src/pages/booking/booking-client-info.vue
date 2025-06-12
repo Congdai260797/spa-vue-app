@@ -1,15 +1,8 @@
 <script setup>
-  import { ref } from 'vue';
+  import { useBookingPetStore } from './../../shared/stores/bookingStore';
   import locations from './../../data/location.json';
 
-  const clientName = ref('');
-  const clientNumber = ref('');
-  const clientEmail = ref('');
-  const selectedCity = ref('');
-  const selectedDistrict = ref('');
-  const selectedWard = ref('');
-  const clientAddress = ref('');
-  const selectedDate = ref('');
+  const bookingPetStore = useBookingPetStore();
 
   const listCity = Array.isArray(locations)
     ? locations.map((location) => ({
@@ -25,7 +18,7 @@
       <div class="label">1. Họ và tên khách hàng</div>
       <div class="mt-[8px]">
         <input
-          v-model="clientName"
+          v-model="bookingPetStore.userName"
           type="text"
           class="w-[380px] h-[40px] border-2 border-[#103559] rounded-[8px] px-[24px]"
           placeholder="Nhập tên khách hàng"
@@ -34,7 +27,7 @@
       <div class="label mt-[16px]">2. Số điện thoại khách hàng</div>
       <div class="mt-[8px]">
         <input
-          v-model="clientNumber"
+          v-model="bookingPetStore.phoneNumber"
           type="number"
           class="w-[380px] h-[40px] border-2 border-[#103559] rounded-[8px] px-[24px]"
           placeholder="Nhập số điện thoại"
@@ -43,8 +36,8 @@
       <div class="label mt-[16px]">3. Email</div>
       <div class="mt-[8px]">
         <input
-          v-model="clientEmail"
-          type="number"
+          v-model="bookingPetStore.email"
+          type="text"
           class="w-[380px] h-[40px] border-2 border-[#103559] rounded-[8px] px-[24px]"
           placeholder="Nhập email"
         />
@@ -53,7 +46,7 @@
       <div class="mt-[8px] w-full flex flex-wrap justify-start gap-[24px]">
         <!-- Tỉnh/TP -->
         <select
-          v-model="selectedCity"
+          v-model="bookingPetStore.selectedCity"
           class="w-[300px] h-[40px] border-2 border-[#103559] px-[24px] rounded-xl focus:outline-none focus:border-blue-600 transition-colors"
         >
           <option disabled value="">Chọn thành phố</option>
@@ -64,14 +57,15 @@
 
         <!-- Quận/Huyện -->
         <select
-          v-model="selectedDistrict"
+          v-model="bookingPetStore.selectedDistrict"
           class="w-[300px] h-[40px] border-2 border-[#103559] px-[24px] rounded-xl focus:outline-none focus:border-blue-600 transition-colors"
         >
           <option disabled value="">Chọn quận huyện</option>
 
           <option
-            v-if="selectedCity !== ''"
-            v-for="district in locations.find((city) => city.Id === selectedCity)?.Districts || []"
+            v-if="bookingPetStore.selectedCity !== ''"
+            v-for="district in locations.find((city) => city.Id === bookingPetStore.selectedCity)
+              ?.Districts || []"
             :key="district.Id"
             :value="district.Id"
           >
@@ -81,15 +75,16 @@
 
         <!-- Phường/Xã -->
         <select
-          v-model="selectedWard"
+          v-model="bookingPetStore.selectedWard"
           class="w-[300px] h-[40px] border-2 border-[#103559] px-[24px] rounded-xl focus:outline-none focus:border-blue-600 transition-colors"
         >
           <option disabled value="">Chọn phường xã</option>
           <option
-            v-if="selectedCity !== '' && selectedDistrict !== ''"
+            v-if="bookingPetStore.selectedCity !== '' && bookingPetStore.selectedDistrict !== ''"
             v-for="ward in locations
-              .find((city) => city.Id === selectedCity)
-              ?.Districts.find((district) => district.Id === selectedDistrict)?.Wards || []"
+              .find((city) => city.Id === bookingPetStore.selectedCity)
+              ?.Districts.find((district) => district.Id === bookingPetStore.selectedDistrict)
+              ?.Wards || []"
             :key="ward.Id"
             :value="ward.Id"
           >
@@ -97,7 +92,7 @@
           </option>
         </select>
         <input
-          v-model="clientAddress"
+          v-model="bookingPetStore.clientAddress"
           type="text"
           class="w-[300px] h-[40px] border-2 border-[#103559] rounded-[8px] px-[24px]"
           placeholder="Nhập địa chỉ"
@@ -106,7 +101,7 @@
       <div class="label mt-[24px]">5. Chọn lịch khám</div>
       <div class="mt-[16px]">
         <input
-          v-model="selectedDate"
+          v-model="bookingPetStore.dateReservation"
           type="date"
           class="w-[380px] h-[40px] border-2 border-[#103559] rounded-[8px] px-[24px]"
         />

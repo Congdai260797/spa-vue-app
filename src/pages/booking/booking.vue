@@ -3,6 +3,7 @@
   import bookingPetInfo from './booking-pet-info.vue';
   import bookingClientInfo from './booking-client-info.vue';
   import bookingClinicInfo from './booking-clinic-info.vue';
+  import bookingComplete from './booking-complete.vue';
 
   const status = ref(1);
 
@@ -133,11 +134,16 @@
         <booking-pet-info v-if="status === 1" />
         <booking-client-info v-if="status === 2" />
         <booking-clinic-info v-if="status === 3" />
+        <booking-complete v-if="status === 4" />
       </div>
 
       <!-- button section -->
       <div class="w-full h-[44px] mt-[16px] flex gap-[30px] justify-end items-center">
-        <button v-if="status > 1" class="button border border-[#103559]" @click="prevStep">
+        <button
+          v-if="status > 1 && status != 4"
+          class="button border border-[#103559]"
+          @click="prevStep"
+        >
           Quay Lại
         </button>
         <button

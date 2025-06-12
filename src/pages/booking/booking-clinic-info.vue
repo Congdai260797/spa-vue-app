@@ -16,10 +16,10 @@
         <div class="block_1 h-full flex items-center border-r border-[#C9CFD4]">
           <img class="w-[160px] h-[160px]" src="./../../assets/image/ClinicListing1.png" alt="" />
           <div class="w-[300px] px-[24px]">
-            <div class="w-full h-fit text-[#103559] size-[18px] font-bold leading-[24px]">
+            <div class="w-full h-fit text-[#103559] text-[18px] font-bold leading-[24px]">
               Phòng khám thú y Happy Pet
             </div>
-            <div class="w-full h-fit text-[#103559] size-[14px] font-bold leading-[20px] mt-[8px]">
+            <div class="w-full h-fit text-[#103559] text-[14px] font-bold leading-[20px] mt-[8px]">
               Dịch vụ: Khám tổng quát, tiêm phòng, phẫu thuật, spa & grooming
             </div>
             <div class="mt-[8px] flex justify-between items-center">
@@ -30,22 +30,22 @@
         </div>
         <div class="block_2 w-[340px] text-[#103559] border-r border-[#C9CFD4] px-[24px]">
           <div class="flex justify-between">
-            <div class="min-w-[120px] size-[16px] font-bold text-[#103559]">Chuyên bệnh:</div>
+            <div class="min-w-[120px] text-[16px] font-bold text-[#103559]">Chuyên bệnh:</div>
             <div>Khám tổng quát, tiêm phòng, phẫu thuật.</div>
           </div>
           <div class="mt-[8px] flex justify-between">
-            <div class="min-w-[120px] size-[16px] font-bold text-[#103559]">Giá ước tính:</div>
+            <div class="min-w-[120px] text-[16px] font-bold text-[#103559]">Giá ước tính:</div>
             <div>Khám tổng quát từ 150.000đ</div>
           </div>
         </div>
         <div class="block_3 align-center w-[200px] px-[24px]">
           <button
-            class="w-[140px] h-[40px] border border-[#103559] bg-[#103559] text-white size-[16px] font-bold"
+            class="w-[140px] h-[40px] border border-[#103559] bg-[#103559] text-white text-[16px] font-bold"
           >
             Đặt lịch khám
           </button>
           <button
-            class="w-[140px] h-[40px] border border-[#103559] text-[#103559] size-[16px] font-bold mt-[8px]"
+            class="w-[140px] h-[40px] border border-[#103559] text-[#103559] text-[16px] font-bold mt-[8px]"
           >
             Xem chi tiết
           </button>
