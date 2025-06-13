@@ -63,7 +63,8 @@
               <img
                 :src="item.logoUrl"
                 alt="Happy Pet Veterinary Clinic"
-                class="w-full h-72 object-cover"
+                class="w-full h-72 object-cover cursor-pointer"
+                @click="goToPage(item.clinicId)"
               />
             </div>
             <div class="p-4">

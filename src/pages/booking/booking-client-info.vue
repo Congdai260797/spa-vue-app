@@ -28,7 +28,7 @@
       <div class="mt-[8px]">
         <input
           v-model="bookingPetStore.phoneNumber"
-          type="number"
+          type="text"
           class="w-[380px] h-[40px] border-2 border-[#103559] rounded-[8px] px-[24px]"
           placeholder="Nhập số điện thoại"
         />

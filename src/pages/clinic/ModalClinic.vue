@@ -94,7 +94,7 @@
 </template>
 
 <script setup>
-  import { ref, computed, watch } from 'vue';
+  import { ref, computed } from 'vue';
 
   const isModalOpen = ref(false);
 
@@ -123,7 +123,6 @@
   };
 
   const filteredServices = computed(() => {
-    console.log(allServices);
     let services = [...allServices.value.pricePerService];
 
     if (nameFilter.value) {
@@ -140,17 +139,6 @@
 
     return services;
   });
-
-  watch(
-    () => props.modelValue,
-    (newValue) => {
-      console.log(allServices.value);
-      // if (newValue) {
-      //   clinic.value = newValue;
-      // }
-    }
-  );
-
   defineExpose({
     openModal,
   });

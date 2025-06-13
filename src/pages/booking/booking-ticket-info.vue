@@ -1,4 +1,14 @@
-<script setup></script>
+<script setup>
+  import { useBookingPetStore } from './../../shared/stores/bookingStore';
+
+  const bookingPetStore = useBookingPetStore();
+
+  const listTypeService = [
+    { value: 'spa', name: 'Chăm sóc - Spa thú cưng' },
+    { value: 'vaccination', name: 'Tiêm phòng & phòng ngừa' },
+    { value: 'treatment', name: 'Khám và điều trị' },
+  ];
+</script>
 
 <template>
   <div class="booking-layout">
@@ -22,20 +32,20 @@
           <div class="mt-[24px] text-[20px] font-bold text-white flex justify-between items-center">
             <div>
               <div>Chủ thú cưng</div>
-              <div class="info">Nguyễn Văn A</div>
+              <div class="info">{{ bookingPetStore.userName }}</div>
               <div>Số điện thoại</div>
-              <div class="info">0366788992</div>
+              <div class="info">{{ bookingPetStore.phoneNumber }}</div>
               <div>Ngày khám</div>
-              <div class="info">01/06/2025</div>
+              <div class="info">{{ bookingPetStore.dateReservation }}</div>
             </div>
 
             <div>
               <div>Phòng khám</div>
-              <div class="info">Petstie Care</div>
+              <div class="info">{{ bookingPetStore.clinicName }}</div>
               <div>Số điện thoại</div>
-              <div class="info">0999999999</div>
+              <div class="info">096453345</div>
               <div>Địa chỉ</div>
-              <div class="info">77 Giải Phóng, Hai Bà Trưng, Hà Nội</div>
+              <div class="info">{{ bookingPetStore.clinicAddress }}</div>
             </div>
           </div>
         </div>
@@ -44,12 +54,24 @@
             Thông tin khám bệnh
           </div>
           <div class="label-info">1. Thú cưng khám</div>
-          <div class="content-info">Mèo</div>
+          <div class="content-info">
+            {{
+              bookingPetStore.petType == 'dog'
+                ? 'Chó'
+                : bookingPetStore.petType == 'cat'
+                  ? 'Mèo'
+                  : 'Khác'
+            }}
+          </div>
           <div class="label-info">2.Loại dịch vụ</div>
-          <div class="content-info">Tiêm phòng</div>
+          <div class="content-info">
+            {{
+              listTypeService.find((service) => service.value === bookingPetStore.serviceType)?.name
+            }}
+          </div>
           <div class="label-info">3.Mô tả chi tiết</div>
           <div class="content-info">
-            Mèo 6 tháng chưa tiêm lần nào. Muốn tiêm dại cả mũi 3 bệnh lun.
+            {{ bookingPetStore.petState }}
           </div>
         </div>
       </div>

@@ -9,10 +9,10 @@ export default class BookingService extends BaseService {
   }
 
   async getBookingData(model: any): Promise<any> {
-    return this.post(`${this.publicApiUrl}/user/reservation`, model);
+    return this.post(`${this.publicApiUrl}/reservation`, model);
   }
 
-  async detailClinic(): Promise<any> {
-    return this.get(`${this.publicApiUrl}/user/clinic?orderBy=&orderType=ASC&county=Cầu Giấy`);
+  async detailClinic(address: string): Promise<any> {
+    return this.get(`${this.publicApiUrl}/user/clinic?orderBy=&orderType=ASC&county=${address}`);
   }
 }
