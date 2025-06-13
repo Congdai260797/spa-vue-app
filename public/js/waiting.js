@@ -134,7 +134,6 @@ function initializeWaiting() {
       console.error("Error:", e);
     });
 }
-console.log("Waiting room script loaded");
 // document.addEventListener("DOMContentLoaded", () => {
 window.initializeWaiting();
 // });

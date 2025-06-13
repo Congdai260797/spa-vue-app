@@ -21,16 +21,12 @@
       userName: bookingPetStore.userName,
       email: bookingPetStore.email,
       phoneNumber: bookingPetStore.phoneNumber,
-      selectedCity: bookingPetStore.selectedCity,
-      selectedDistrict: bookingPetStore.selectedDistrict,
-      selectedWard: bookingPetStore.selectedWard,
-      clientAddress: bookingPetStore.clientAddress,
       dateReservation: bookingPetStore.dateReservation,
       clinicId: bookingPetStore.clinicId,
+      address: bookingPetStore.address,
     };
-    console.log(request);
     const response = await bookingService.getBookingData(request);
-    if (response.success) {
+    if (response.message == 'success') {
       router.push('/booking/ticket-info');
     }
   };

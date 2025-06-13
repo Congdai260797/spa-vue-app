@@ -5,6 +5,10 @@
 
   import { useBookingPetStore } from './../../shared/stores/bookingStore';
 
+  import locations from './../../data/location.json';
+
+  const listCity = locations;
+
   const bookingPetStore = useBookingPetStore();
 
   const bookingService = new BookingService();
@@ -12,9 +16,27 @@
   const listClinic = ref([]);
 
   onMounted(async () => {
-    const response = await bookingService.detailClinic();
+    const selectedCity = bookingPetStore.selectedCity;
+    const selectedDistrict = bookingPetStore.selectedDistrict;
+    const selectedWard = bookingPetStore.selectedWard;
+    const clientAddress = bookingPetStore.clientAddress;
+
+    const cityName = listCity.find((item) => item.Id == selectedCity)?.Name;
+
+    const district = listCity
+      .find((item) => item.Id == selectedCity)
+      .Districts.find((district) => district.Id == selectedDistrict).Name;
+
+    const ward = listCity
+      .find((item) => item.Id == selectedCity)
+      .Districts.find((district) => district.Id == selectedDistrict)
+      .Wards.find((ward) => ward.Id == selectedWard).Name;
+
+    const address = `${clientAddress} ${ward} ${district} ${cityName}`;
+    bookingPetStore.address = address;
+
+    const response = await bookingService.detailClinic(address);
     listClinic.value = response.data.clinics;
-    console.log(listClinic.value);
   });
 
   const addClinic = (clinic) => {

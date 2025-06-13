@@ -44,7 +44,6 @@
       const response = await clinicService.getListClinic();
       if (response.data && response.data.clinics) {
         listClinic.value = response.data.clinics;
-        console.log(listClinic);
       } else {
         console.error('Clinic data not found in response');
       }

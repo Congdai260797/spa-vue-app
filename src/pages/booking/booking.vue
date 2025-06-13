@@ -15,9 +15,6 @@
 
   function nextStep() {
     status.value += 1;
-    if (status.value === 4) {
-      console.log(bookingPetStore);
-    }
   }
 
   function prevStep() {

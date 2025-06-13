@@ -14,6 +14,9 @@ export const useBookingPetStore = defineStore('bookingPet', () => {
   const clientAddress = ref('');
   const dateReservation = ref('');
   const clinicId = ref('');
+  const clinicName = ref('');
+  const clinicAddress = ref('');
+  const address = ref('');
 
   return {
     petType,
@@ -28,5 +31,8 @@ export const useBookingPetStore = defineStore('bookingPet', () => {
     clientAddress,
     dateReservation,
     clinicId,
+    clinicName,
+    clinicAddress,
+    address,
   };
 });
