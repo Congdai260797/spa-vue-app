@@ -59,7 +59,9 @@
       </div>
       <div class="w-[410px] box-shadow py-[8px] px-[16px] text-[#103559]">
         <div class="w-full h-[24px] text-[20px] font-bold">Thông tin lịch khám</div>
-        <div class="mt-[8px] w-full h-[24px] text-[16px]">Lịch hẹn :</div>
+        <div class="mt-[8px] w-full h-[24px] text-[16px]">
+          Lịch hẹn :{{ bookingPetStore.dateReservation }}
+        </div>
         <div class="w-full text-[16px]">Phòng khám : {{ bookingPetStore.clinicName }}</div>
         <div class="w-full text-[16px]">Địa chỉ : {{ bookingPetStore.clinicAddress }}</div>
       </div>

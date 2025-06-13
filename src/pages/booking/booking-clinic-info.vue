@@ -37,6 +37,8 @@
 
     const response = await bookingService.detailClinic(address);
     listClinic.value = response.data.clinics;
+
+    console.log(listClinic.value);
   });
 
   const addClinic = (clinic) => {
@@ -74,10 +76,10 @@
 
           <div class="w-[300px] px-[24px]">
             <div class="w-full h-fit text-[#103559] text-[18px] font-bold leading-[24px]">
-              Phòng khám thú y Happy Pet
+              {{ clinic?.name }}
             </div>
             <div class="w-full h-fit text-[#103559] text-[14px] font-bold leading-[20px] mt-[8px]">
-              Dịch vụ: Khám tổng quát, tiêm phòng, phẫu thuật, spa & grooming
+              {{ clinic?.clinicDescription }}
             </div>
             <div class="mt-[8px] flex justify-between items-center">
               <div class="flex items-center gap-[2px]">
@@ -94,13 +96,13 @@
           </div>
         </div>
         <div class="block_2 w-[340px] text-[#103559] border-r border-[#C9CFD4] px-[24px]">
-          <div class="flex justify-between">
+          <div class="flex justify-start">
             <div class="min-w-[120px] text-[16px] font-bold text-[#103559]">Chuyên bệnh:</div>
-            <div>Khám tổng quát, tiêm phòng, phẫu thuật.</div>
+            <div>{{ clinic?.clinicServices[0].nameService }}</div>
           </div>
           <div class="mt-[8px] flex justify-between">
             <div class="min-w-[120px] text-[16px] font-bold text-[#103559]">Giá ước tính:</div>
-            <div>Khám tổng quát từ 150.000đ</div>
+            <div>Khám tổng quát từ {{ clinic?.clinicServices[0].priceFrom }}đ</div>
           </div>
         </div>
         <div class="block_3 align-center w-[200px] px-[24px]">
