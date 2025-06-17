@@ -11,6 +11,7 @@ router.afterEach(() => {
     // if (to.fullPath === '/home') {
 
     // Create a new <script> element to load an external JavaScript file
+    console.log('object');
     const script = document.createElement('script');
     script.src = '/js/waiting.js'; // Path to the script file
     script.type = 'text/javascript'; // Set the type attribute to JavaScript

@@ -129,6 +129,6 @@ function initializeWaiting() {
       console.error('Error:', e);
     });
 }
-document.addEventListener('DOMContentLoaded', () => {
-  window.initializeWaiting();
-});
+// document.addEventListener('DOMContentLoaded', () => {
+window.initializeWaiting();
+// });
