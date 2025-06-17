@@ -6,7 +6,7 @@ import router from './router'; // Import router đã tách
 
 const app = createApp(App);
 
-router.afterEach((to) => {
+router.afterEach(() => {
     // Check if the route is '/home'
     // if (to.fullPath === '/home') {
 
