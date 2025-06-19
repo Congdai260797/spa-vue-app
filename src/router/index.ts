@@ -63,6 +63,15 @@ const routes = [
       icon: 'fa-calendar', // Tùy chọn: thêm icon
     },
   },
+  {
+    path: '/review',
+    name: 'Review',
+    component: () => import('../pages/review/Review.vue'),
+    meta: {
+      breadcrumb: 'Đánh giá',
+      icon: 'fa-review', // Tùy chọn: thêm icon
+    },
+  },
 ];
 
 const router = createRouter({
