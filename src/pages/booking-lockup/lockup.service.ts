@@ -8,8 +8,8 @@ export default class LockupService extends BaseService {
     super();
   }
 
-  async getBookingData(model: any): Promise<any> {
-    return this.post(`${this.publicApiUrl}/reservation`, model);
+  async getBookingData(phoneNumber: string): Promise<any> {
+    return this.get(`${this.publicApiUrl}/reservation?phoneNumber=${phoneNumber}`);
   }
 
   async detailClinic(id: string): Promise<any> {

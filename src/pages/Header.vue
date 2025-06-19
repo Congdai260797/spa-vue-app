@@ -9,7 +9,9 @@
       <nav class="hidden md:flex items-center space-x-8 font-bold">
         <a href="/home" class="hover:text-brand-orange transition-colors">Giới thiệu</a>
         <a href="/clinic" class="hover:text-brand-orange transition-colors">Danh sách phòng khám</a>
-        <a href="/lookup" class="hover:text-brand-orange transition-colors">Tra cứu lịch đặt</a>
+        <a href="/booking-lookup" class="hover:text-brand-orange transition-colors"
+          >Tra cứu lịch đặt</a
+        >
         <a href="/feedback" class="hover:text-brand-orange transition-colors">Phản hồi</a>
       </nav>
       <!-- Action Button -->

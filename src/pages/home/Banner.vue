@@ -54,15 +54,15 @@
 
           <div class="flex flex-col sm:flex-row gap-4 lg:justify-end mr-6">
             <a
-              href="/booking"
-              class="px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors border border-brand-blue text-brand-blue"
+              @click="goBooking"
+              class="px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors border border-brand-blue text-brand-blue cursor-pointer"
             >
               Đặt lịch ngay
             </a>
 
             <a
-              href="/clinic"
-              class="bg-brand-blue text-white font-semibold px-6 py-2 rounded-full hover:bg-opacity-90 transition-colors"
+              @click="goClinic"
+              class="bg-brand-blue text-white font-semibold px-6 py-2 rounded-full hover:bg-opacity-90 transition-colors cursor-pointer"
             >
               Tìm phòng khám
             </a>
@@ -76,6 +76,9 @@
 <script setup>
   import { ref, computed } from 'vue';
   import bannerImage from './../../assets/image/Banner.png';
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter();
 
   const backgroundImagePath = ref(bannerImage);
 
@@ -98,5 +101,13 @@
 
   const handleSearch = () => {
     console.log('Tìm phòng khám clicked');
+  };
+
+  const goBooking = () => {
+    router.push('/booking');
+  };
+
+  const goClinic = () => {
+    router.push('/clinic');
   };
 </script>

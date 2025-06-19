@@ -11,37 +11,21 @@
           v-for="item in featuredServices"
           :key="item.code"
         >
-          <div
-            class="aspect-square bg-blue-100 flex items-center justify-center"
-          >
-            <img
-              :src="item.image"
-              :alt="item.nameService"
-              class="w-full h-full object-cover"
-            />
+          <div class="aspect-square bg-blue-100 flex items-center justify-center">
+            <img :src="item.image" :alt="item.nameService" class="w-full h-full object-cover" />
           </div>
           <div class="p-4">
             <h2 class="font-semibold text-gray-800 mb-2">
               {{ item.nameService }}
             </h2>
-            <p class="text-sm text-gray-600 mb-3">
-              Thú cưng: {{ item.description }}
-            </p>
-            <p class="font-bold text-gray-800 mb-3">
-              Chỉ từ: {{ item.priceFrom }} VND
-            </p>
+            <p class="text-sm text-gray-600 mb-3">Thú cưng: {{ item.description }}</p>
+            <p class="font-bold text-gray-800 mb-3">Chỉ từ: {{ item.priceFrom }} VND</p>
             <div
               v-if="item.freeDeworming"
               class="flex items-center text-red-500 bg-cream p-2 rounded-lg"
             >
-              <img
-                class="h-5 w-5 mr-2"
-                src="./../../assets/image/gift.png"
-                alt=""
-              />
-              <span class="text-sm text-black-blue font-bold"
-                >⋅ Miễn phí tẩy giun</span
-              >
+              <img class="h-5 w-5 mr-2" src="./../../assets/image/gift.png" alt="" />
+              <span class="text-sm text-black-blue font-bold">⋅ Miễn phí tẩy giun</span>
             </div>
           </div>
         </div>
@@ -51,43 +35,45 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from "vue";
-import image1 from "./../../assets/image/frame_8.png";
-import image2 from "./../../assets/image/frame_9.png";
-import image3 from "./../../assets/image/frame_10.png";
-import image4 from "./../../assets/image/frame_11.png";
+  import { ref, computed, watch } from 'vue';
+  import image1 from './../../assets/image/frame_8.png';
+  import image2 from './../../assets/image/frame_9.png';
+  import image3 from './../../assets/image/frame_10.png';
+  import image4 from './../../assets/image/frame_11.png';
+  import { Constants } from '../../shared/model/constants.ts';
 
-const props = defineProps({
-  modelValue: {
-    type: Object,
-    required: true,
-  },
-});
+  const props = defineProps({
+    modelValue: {
+      type: Object,
+      required: true,
+    },
+  });
 
-const data = computed(() => props.modelValue);
+  const data = computed(() => props.modelValue);
 
-const listImage = [image1, image2, image3, image4];
+  const listImage = [image1, image2, image3, image4];
 
-const featuredServices = ref([]);
+  const featuredServices = ref([]);
 
-watch(
-  () => props.modelValue,
-  (newValue) => {
-    if (newValue && newValue.clinicServices) {
-      featuredServices.value = newValue.clinicServices
-        .slice(0, 4)
-        .map((service, index) => ({
-          image: listImage[index] || "",
+  const listPetType = Constants.PET_TYPE_ENUM;
+
+  const typePet = Constants.typeMap;
+  watch(
+    () => props.modelValue,
+    (newValue) => {
+      if (newValue && newValue.clinicServices) {
+        featuredServices.value = newValue.clinicServices.slice(0, 4).map((service, index) => ({
+          image: listImage[index] || '',
           nameService: service.nameService,
-          description: service.petType.join(", "),
+          description: service.petType.map((type) => typePet[type] || type).join(', '),
           freeDeworming: service.freeDeworming || false,
           priceFrom: service.priceFrom,
         }));
+      }
     }
-  }
-);
+  );
 </script>
 
 <style scoped>
-/* Additional custom styles if needed */
+  /* Additional custom styles if needed */
 </style>

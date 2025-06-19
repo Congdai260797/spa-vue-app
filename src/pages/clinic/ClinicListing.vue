@@ -2,7 +2,7 @@
   <div class="container mx-auto p-4 mb-12">
     <!-- Title -->
 
-    <div class="max-w-7xl mx-auto">
+    <div class="mx-auto">
       <!-- Header Section -->
       <div class="flex justify-center items-center mb-6">
         <h2 class="text-4xl md:text-5xl font-bold text-brand-blue text-center mb-20">
@@ -75,11 +75,6 @@
   import { ref, watch, computed } from 'vue';
   import { useRouter } from 'vue-router';
 
-  import image1 from './../../assets/image/ClinicListing1.png';
-  import image2 from './../../assets/image/ClinicListing2.png';
-  import image3 from './../../assets/image/ClinicListing3.png';
-  import image4 from './../../assets/image/ClinicListing4.png';
-
   const router = useRouter();
 
   const props = defineProps({
@@ -88,8 +83,6 @@
       required: true,
     },
   });
-
-  const listImage = [image1, image2, image3, image4];
 
   const data = computed(() => props.modelValue);
 
@@ -102,9 +95,10 @@
   watch(
     () => props.modelValue,
     (newValue) => {
+      console.log(Object.values(newValue));
       if (newValue) {
         clinicList.value = newValue.slice(0, 4).map((item, index) => ({
-          image: listImage[index] || '',
+          image: item.logoUrl || '',
           clinicName: item.clinicName,
           clinicSpecialties: item.clinicSpecialties,
           rating: item.rating.toFixed(1),

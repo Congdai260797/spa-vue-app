@@ -5,10 +5,12 @@
   import bookingInfo from './Booking-info.vue';
   import bookingClose from './Booking-close.vue';
   import locations from './../../data/location.json';
+  import ServiceModal from './ModalBooking.vue';
 
+  const serviceModalRef = ref(null);
   const status = ref(1);
-  const bookingID = ref('');
-  // const bookingStore = new useBookingStore();
+  const booking = ref({});
+  const isModal = ref(false);
 
   function nextStep() {
     status.value += 1;
@@ -19,6 +21,11 @@
       status.value -= 1;
     }
   }
+  const showModal = () => {
+    if (serviceModalRef.value) {
+      serviceModalRef.value.openModal();
+    }
+  };
 </script>
 
 <template>
@@ -26,9 +33,14 @@
     <div class="booking">
       <div class="mt-[30px] w-full min-h-[300px]">
         <!-- {{ status }}aaaaaaa-{{ bookingID }} -->
-        <bookingInfo v-model:status="status" :bookingID="bookingID" v-if="status === 1" />
-        <bookingComplete v-model:status="status" v-if="status === 2" />
-        <bookingClose v-model:status="status" v-if="status === 3" />
+        <bookingInfo v-model:status="status" v-model:booking="booking" v-if="status === 1" />
+        <bookingComplete v-model:status="status" v-model:booking="booking" v-if="status === 2" />
+        <bookingClose
+          v-model:status="status"
+          v-model:booking="booking"
+          v-model:isModal="isModal"
+          v-if="status === 3"
+        />
       </div>
     </div>
 
@@ -36,6 +48,13 @@
     <div class="square-1"></div>
     <div class="square-2"></div>
   </div>
+  {{ isModal }}aaaaaaaaa
+  <ServiceModal
+    v-model:isModal="isModal"
+    v-model:booking="booking"
+    ref="serviceModalRef"
+    v-if="isModal"
+  />
 </template>
 
 <style scoped>

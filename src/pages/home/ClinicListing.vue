@@ -1,12 +1,12 @@
 <template>
-  <div class="container mx-auto p-4 bg-gray-50 mb-12">
-    <div class="max-w-7xl mx-auto">
+  <div class="container mx-auto p-4 mb-12">
+    <div class="mx-auto">
       <!-- Header Section -->
       <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold text-gray-900">Phòng khám nội bật</h1>
         <a
-          href="#"
-          class="px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors border border-brand-blue text-brand-blue flex items-center justify-center gap-2"
+          @click="goClinic"
+          class="px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors border border-brand-blue text-brand-blue flex items-center justify-center gap-2 cursor-pointer"
         >
           Xem thêm
           <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -100,6 +100,9 @@
 
   const goToPage = (clinicId) => {
     router.push({ name: 'Clinic', params: { clinicId } });
+  };
+  const goClinic = () => {
+    router.push('/clinic');
   };
 </script>
 

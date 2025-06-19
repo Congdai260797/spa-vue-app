@@ -5,8 +5,8 @@
       <img src="./../../assets/image/about.png" alt="Clinic Banner" class="object-cover" />
     </div>
 
-    <div class="container mx-auto p-4">
-      <div class="max-w-7xl mx-auto">
+    <div class="container mx-auto px-6">
+      <div class="mx-auto">
         <!-- Clinic Cards Grid -->
         <Breadcrumb ref="breadcrumb" class="bg-light-cream mb-4" />
         <div
@@ -29,8 +29,10 @@
               @change="handleChange"
               class="border border-gray-300 rounded-md bg-white px-4 py-2 w-64 text-gray-700 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none"
             >
-              <option value="default">Mới nhất</option>
-              <option value="rating">Đánh giá cao nhất</option>
+              <option value="default">Mặc định</option>
+              <option value="popularity">Độ phổ biến</option>
+              <option value="averageRating">Đánh giá trung bình</option>
+              <option value="latest">Mới nhất</option>
             </select>
 
             <!-- Custom dropdown arrow -->
@@ -67,9 +69,9 @@
                 @click="goToPage(item.clinicId)"
               />
             </div>
-            <div class="p-4">
+            <div class="flex flex-col justify-between p-4 h-[200px]">
               <h3
-                class="font-semibold text-gray-900 mb-2 cursor-pointer"
+                class="font-semibold h-[48px] text-gray-900 mb-2 cursor-pointer"
                 @click="goToPage(item.clinicId)"
               >
                 {{ item.clinicName }}

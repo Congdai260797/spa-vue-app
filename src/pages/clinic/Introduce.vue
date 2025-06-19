@@ -1,6 +1,6 @@
 <template>
-  <Breadcrumb ref="breadcrumb" class="bg-light-cream mb-4 mt-4" />
-  <div class="bg-light-cream p-6">
+  <div class="container mx-auto bg-light-cream p-6">
+    <Breadcrumb ref="breadcrumb" class="bg-light-cream mb-4 mt-4" />
     <div class="max-w-6xl mx-auto">
       <!-- Main Content -->
       <div class="rounded-lg p-8">
@@ -34,8 +34,8 @@
             <!-- Action Buttons -->
             <div class="flex flex-col sm:flex-row gap-4">
               <a
-                href="#"
-                class="bg-brand-blue text-white font-semibold px-6 py-2 rounded-full hover:bg-opacity-90 transition-colors"
+                @click="goBooking"
+                class="bg-brand-blue text-white font-semibold px-6 py-2 rounded-full hover:bg-opacity-90 transition-colors cursor-pointer"
               >
                 Đặt lịch ngay
               </a>
@@ -59,6 +59,9 @@
   import { ref, computed } from 'vue';
   import ServiceModal from './ModalClinic.vue';
   import Breadcrumb from '../../shared/components/Breadcrumb.vue';
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter();
 
   const serviceModalRef = ref(null);
 
@@ -74,6 +77,10 @@
     if (serviceModalRef.value) {
       serviceModalRef.value.openModal();
     }
+  };
+
+  const goBooking = () => {
+    router.push('/booking');
   };
 
   // watch(

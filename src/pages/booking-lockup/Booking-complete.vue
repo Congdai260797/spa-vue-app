@@ -1,15 +1,19 @@
 <script setup>
+  import { defineProps, defineEmits } from 'vue';
+  import { Constants } from '../../shared/model/constants.ts';
   const props = defineProps({
     status: Number,
+    booking: Object,
   });
 
   const emit = defineEmits(['update:status']);
 
-  const bookingClose = () => {
-    // Logic to handle booking close action
+  const listPetType = Constants.PET_TYPE_ENUM;
 
+  const listTypeService = Constants.SERVICE_TYPE_LABELS;
+
+  const bookingClose = () => {
     emit('update:status', 3);
-    console.log(`Closing booking with status: ${props.status}`);
   };
 </script>
 
@@ -22,27 +26,27 @@
         <!-- ticket code -->
         <span
           class="w-[174px] h-[34px] leading-[34px] rounded-xl border border-white bg-[#30688A] text-center text-[20px] font-bold text-white"
-          >STT012088</span
+          >{{ booking.no }}</span
         >
       </div>
 
       <div class="mt-[24px] text-[20px] font-bold text-white flex justify-between items-center">
         <div>
           <div>Chủ thú cưng</div>
-          <div class="info">Đỗ Công Đại</div>
+          <div class="info">{{ booking.userName }}</div>
           <div>Số điện thoại</div>
-          <div class="info">096453345</div>
+          <div class="info">{{ booking.phoneNumber }}</div>
           <div>Ngày khám</div>
-          <div class="info">12/12/2022</div>
+          <div class="info">{{ booking.dateReservation }}</div>
         </div>
 
         <div>
           <div>Phòng khám</div>
-          <div class="info">Phòng khám thú y ABC</div>
+          <div class="info">{{ booking.clinic.clinicName }}</div>
           <div>Số điện thoại</div>
-          <div class="info">096453345</div>
+          <div class="info">{{ booking.clinic.clinicPhone }}</div>
           <div>Địa chỉ</div>
-          <div class="info">123 Đường ABC, Quận 1, TP.HCM</div>
+          <div class="info">{{ booking.clinic.clinicAddress }}</div>
         </div>
       </div>
     </div>
@@ -52,12 +56,14 @@
       </div>
       <div class="label-info">1. Thú cưng khám</div>
       <div class="content-info">
-        {{ 'Chó' }}
+        {{ listPetType.find((item) => item.value === booking.petType)?.name || '' }}
       </div>
       <div class="label-info">2.Loại dịch vụ</div>
-      <div class="content-info">aa</div>
+      <div class="content-info">
+        {{ listTypeService.find((item) => item.value === booking.serviceType)?.name || '' }}
+      </div>
       <div class="label-info">3.Mô tả chi tiết</div>
-      <div class="content-info">aaaaa</div>
+      <div class="content-info">{{ booking.petState }}</div>
     </div>
   </div>
   <div class="w-full h-[150px] flex align-center bottom-block rounded-b-xl">
