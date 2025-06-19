@@ -26,17 +26,15 @@
   const clinics = ref([]);
 
   onMounted(async () => {
-    // isLoading.value = true;
-    // const response = await homeService.getListClinic();
-    // if (response) {
-    //   const getClinics = response.data.clinics
-    //     .slice()
-    //     .sort((a, b) => b.rating - a.rating)
-    //     .slice(0, 4);
-    //   clinics.value = response.data.clinics.filter((item) =>
-    //     getClinics.includes(item)
-    //   );
-    // }
-    // isLoading.value = false;
+    isLoading.value = true;
+    const response = await homeService.getListClinic();
+    if (response) {
+      const getClinics = response.data.clinics
+        .slice()
+        .sort((a, b) => b.rating - a.rating)
+        .slice(0, 4);
+      clinics.value = response.data.clinics.filter((item) => getClinics.includes(item));
+    }
+    isLoading.value = false;
   });
 </script>

@@ -54,6 +54,15 @@ const routes = [
       icon: 'fa-clinic', // Tùy chọn: thêm icon
     },
   },
+  {
+    path: '/booking-lookup',
+    name: 'BookingLookup',
+    component: () => import('../pages/booking-lockup/Booking-lockup.vue'),
+    meta: {
+      breadcrumb: 'Tra cứu lịch đặt',
+      icon: 'fa-calendar', // Tùy chọn: thêm icon
+    },
+  },
 ];
 
 const router = createRouter({

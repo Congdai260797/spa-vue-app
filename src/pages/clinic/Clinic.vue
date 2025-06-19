@@ -131,9 +131,9 @@
   const selectedValue = ref('default');
 
   onMounted(async () => {
-    // isLoading.value = true;
-    // await getListClinic();
-    // isLoading.value = false;
+    isLoading.value = true;
+    await getListClinic();
+    isLoading.value = false;
   });
 
   const handleChange = (event) => {
