@@ -54,7 +54,7 @@
         </button>
         <button
           class="w-[200px] text-[17px] text-[#103559] font-bold h-[44px] leading-[44px] border border-[#103559] mt-4 mr-2 ml-2"
-          @click="goHome"
+          @click="goBackList"
         >
           Tôi muốn giữ lịch này
         </button>
@@ -139,6 +139,11 @@
 
   const goBack = () => {
     // Logic to go back to the previous step
+    emit('update:status', 2);
+  };
+
+  const goBackList = () => {
+    // Logic to go back to the booking list
     emit('update:status', 2);
   };
 
