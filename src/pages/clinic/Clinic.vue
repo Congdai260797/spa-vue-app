@@ -30,9 +30,9 @@
               class="border border-gray-300 rounded-md bg-white px-4 py-2 w-64 text-gray-700 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none"
             >
               <option value="default">Mặc định</option>
-              <option value="popularity">Độ phổ biến</option>
-              <option value="averageRating">Đánh giá trung bình</option>
-              <option value="latest">Mới nhất</option>
+              <option value="reservationCount">Độ phổ biến</option>
+              <option value="rating">Đánh giá trung bình</option>
+              <option value="default">Mới nhất</option>
             </select>
 
             <!-- Custom dropdown arrow -->
@@ -144,6 +144,8 @@
       listClinic.value.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     } else if (type === 'rating') {
       listClinic.value.sort((a, b) => b.rating - a.rating);
+    } else if (type === 'reservationCount') {
+      listClinic.value.sort((a, b) => b.reservationCount - a.reservationCount);
     }
   };
 

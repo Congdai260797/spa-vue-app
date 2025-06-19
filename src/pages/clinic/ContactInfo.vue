@@ -15,7 +15,7 @@
                   />
                 </svg>
               </div>
-              <span class="text-gray-600 font-medium">(125)</span>
+              <span class="text-gray-600 font-medium">({{ data.reservationCount }})</span>
             </div>
           </div>
           <!-- Map placeholder -->

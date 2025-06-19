@@ -29,6 +29,7 @@
           :key="item.code"
         >
           <div class="relative">
+            aa
             <img
               :src="item.logoUrl"
               alt="Happy Pet Veterinary Clinic"
@@ -99,7 +100,7 @@
   const clinics = computed(() => props.modelValue);
 
   const goToPage = (clinicId) => {
-    router.push({ name: 'Clinic', params: { clinicId } });
+    window.location.href = `/clinic/${clinicId}`;
   };
   const goClinic = () => {
     router.push('/clinic');

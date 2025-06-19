@@ -50,7 +50,7 @@ const routes = [
     name: 'ClinicDetail',
     component: () => import('../pages/clinic/AboutClinic.vue'),
     meta: {
-      breadcrumb: 'Chi tiết phòng khám',
+      breadcrumb: 'Danh sách phòng khám',
       icon: 'fa-clinic', // Tùy chọn: thêm icon
     },
   },

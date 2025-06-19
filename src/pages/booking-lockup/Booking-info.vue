@@ -18,12 +18,16 @@
           placeholder="Nhập số điện thoại"
         />
       </div>
+
       <button
         class="w-[200px] text-[17px] text-[#103559] font-bold h-[44px] leading-[44px] border border-[#FFB775] bg-[#FFB775] mt-4"
         @click="getBookingInfo"
       >
         Tra cứu
       </button>
+      <div v-if="data.length === 0 && isSubmit" class="text-[17px] text-[#58dfa8] font-bold mt-6">
+        Bạn không có lịch hẹn nào.
+      </div>
     </div>
 
     <!-- Hình minh họa -->
@@ -56,10 +60,16 @@
               <span>Lịch hẹn:</span> <span class="font-bold">{{ item.dateReservation }}</span>
             </div>
             <div class="w-full h-fit text-[16px] leading-[20px] mt-[8px]">
-              <span>Thú cưng:</span> <span class="font-bold">{{ item.petType }}</span>
+              <span>Thú cưng:</span>
+              <span class="font-bold">{{
+                listPetType.find((value) => value.value === item.petType)?.name || ''
+              }}</span>
             </div>
             <div class="w-full h-fit text-[16px] leading-[20px] mt-[8px]">
-              <span>Dịch vụ:</span> <span class="font-bold">{{ item.serviceType }}</span>
+              <span>Dịch vụ:</span>
+              <span class="font-bold">{{
+                listTypeService.find((value) => value.value === item.serviceType)?.name || ''
+              }}</span>
             </div>
           </div>
         </div>
@@ -70,8 +80,8 @@
 
 <script setup>
   import { ref } from 'vue';
-  // import Loading from '../../shared/components/Loading.vue';
   import LockupService from './lockup.service';
+  import { Constants } from '../../shared/model/constants.ts';
   const props = defineProps({
     status: Number,
     booking: Object,
@@ -82,6 +92,12 @@
   const phoneNumber = ref('');
   const data = ref([]);
 
+  const listPetType = Constants.PET_TYPE_ENUM;
+
+  const listTypeService = Constants.SERVICE_TYPE_LABELS;
+
+  const isSubmit = ref(false);
+
   const emit = defineEmits(['update:status', 'update:bookingID']);
 
   const detailBooking = (item) => {
@@ -91,14 +107,13 @@
   };
 
   const getBookingInfo = async () => {
-    // isLoading.value = true;
     const response = await bookingService.getBookingData(phoneNumber.value);
     if (response && response.data) {
       data.value = response.data;
     } else {
+      isSubmit.value = true;
       console.error('Clinic data not found in response');
     }
-    // isLoading.value = false;
   };
 </script>
 

@@ -32,7 +32,6 @@
   <div class="booking-layout">
     <div class="booking">
       <div class="mt-[30px] w-full min-h-[300px]">
-        <!-- {{ status }}aaaaaaa-{{ bookingID }} -->
         <bookingInfo v-model:status="status" v-model:booking="booking" v-if="status === 1" />
         <bookingComplete v-model:status="status" v-model:booking="booking" v-if="status === 2" />
         <bookingClose
@@ -48,7 +47,6 @@
     <div class="square-1"></div>
     <div class="square-2"></div>
   </div>
-  {{ isModal }}aaaaaaaaa
   <ServiceModal
     v-model:isModal="isModal"
     v-model:booking="booking"

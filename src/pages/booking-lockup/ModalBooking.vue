@@ -37,7 +37,9 @@
           <div class="space-y-2 text-sm">
             <p>Thời gian hẹn: {{ booking?.dateReservation }}</p>
             <p>Phòng khám: {{ booking?.clinic?.clinicName }}</p>
-            <p>Thú cưng: {{ booking?.petType }}</p>
+            <p>
+              Thú cưng: {{ listPetType.find((item) => item.value === booking.petType)?.name || '' }}
+            </p>
           </div>
         </div>
       </div>
@@ -63,9 +65,12 @@
 
 <script setup>
   import { ref } from 'vue';
-
   import { useRouter } from 'vue-router';
+  import { Constants } from '../../shared/model/constants.ts';
+
   const router = useRouter();
+
+  const listPetType = Constants.PET_TYPE_ENUM;
 
   const props = defineProps({
     booking: Object,
