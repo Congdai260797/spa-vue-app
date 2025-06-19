@@ -29,7 +29,6 @@
           :key="item.code"
         >
           <div class="relative">
-            aa
             <img
               :src="item.logoUrl"
               alt="Happy Pet Veterinary Clinic"

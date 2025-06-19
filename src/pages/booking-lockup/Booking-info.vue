@@ -111,9 +111,11 @@
     if (response && response.data) {
       data.value = response.data;
     } else {
-      isSubmit.value = true;
       console.error('Clinic data not found in response');
     }
+    setTimeout(() => {
+      isSubmit.value = true;
+    }, 0);
   };
 </script>
 

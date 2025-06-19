@@ -3,8 +3,8 @@
     class="bg-cream min-h-[675px] bg-gradient-to-br from-orange-50 relative overflow-hidden rounded-bl-[40px] rounded-br-[40px]"
   >
     <!-- Background decorative shapes -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="absolute top-[-65px] left-[-10px] w-[400px] h-[100px] rounded-full">
+    <div class="container mx-auto absolute inset-0 overflow-hidden">
+      <div class="absolute top-[-65px] left-[-60px] w-[400px] h-[100px] rounded-full">
         <img src="./../../assets/image/rectangle_4.png" alt="" />
       </div>
 
@@ -23,10 +23,10 @@
     </div>
 
     <!-- Hero Section -->
-    <main class="relative z-10 px-6 py-12">
+    <main class="relative container mx-auto z-10 px-6 py-12">
       <div class="mx-auto">
         <!-- Left Content -->
-        <div class="space-y-8 mt-[100px] ml-[60px]">
+        <div class="space-y-8 mt-[100px]">
           <div class="space-y-6">
             <h1 class="text-[46px] font-bold text-brand-blue leading-tight">
               ĐẶT LỊCH KHÁM THÚ CƯNG<br />

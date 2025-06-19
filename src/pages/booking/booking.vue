@@ -123,11 +123,11 @@
             <span>THÚ CƯNG</span>
           </li>
           <li class="flex flex-col w-full items-start">
-            <span>THÔNG TIN</span>
+            <span class="ml-2">THÔNG TIN</span>
             <span>KHÁCH HÀNG</span>
           </li>
           <li class="flex flex-col w-full items-start">
-            <span>CHỌN</span>
+            <span class="ml-5">CHỌN</span>
             <span>PHÒNG KHÁM</span>
           </li>
           <li class="flex flex-col w-full items-start">
