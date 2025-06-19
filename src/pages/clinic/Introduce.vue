@@ -32,19 +32,27 @@
             </div>
 
             <!-- Action Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4">
+            <div class="w-[300px] h-[52px]">
               <a
                 @click="goBooking"
-                class="bg-brand-blue text-white font-semibold px-6 py-2 rounded-full hover:bg-opacity-90 transition-colors cursor-pointer"
+                class="bg-brand-blue text-white font-semibold px-6 py-2 rounded-full hover:bg-opacity-90 transition-colors cursor-pointer flex items-center justify-center"
               >
                 Đặt lịch ngay
               </a>
+            </div>
+            <div class="w-[300px] flex justify-between gap-4">
               <a
                 href="#"
                 class="px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors border border-brand-blue text-brand-blue"
                 @click="showServiceList"
               >
                 Xem bảng giá
+              </a>
+              <a
+                @click="goReview"
+                class="px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors border border-brand-blue text-brand-blue cursor-pointer"
+              >
+                Đánh giá
               </a>
             </div>
           </div>
@@ -81,6 +89,10 @@
 
   const goBooking = () => {
     router.push('/booking');
+  };
+
+  const goReview = () => {
+    router.push(`/review?clinicId=${clinic.value.clinicId}`);
   };
 
   // watch(

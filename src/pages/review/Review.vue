@@ -14,10 +14,10 @@
           class="w-full h-[204px] bg-[#FFE7BA] p-[24px] rounded-[12px] flex items-start gap-x-[24px]"
         >
           <div
-            class="w-[114px] h-[114px] border-[2px] border-[#9A9A9A] rounded-full overflow-hidden"
+            class="min-w-[114px] h-[114px] border-[2px] border-[#9A9A9A] rounded-full overflow-hidden"
           >
             <img
-              src="./../../assets/image/ht-pet.jpg"
+              :src="dataResponse?.overview?.logoUrl || ''"
               alt="store logo"
               class="w-full h-full object-cover"
             />
@@ -30,9 +30,9 @@
               <span class="text-[10px] text-black font-normal">Đã kiểm chứng</span>
             </div>
 
-            <div class="w-[306px]">
+            <div class="min-w-[306px]">
               <div
-                class="w-full overflow-hidden text-ellipsis whitespace-nowrap text-black text-[36px] font-bold"
+                class="w-full overflow-hidden text-ellipsis whitespace-nowrap text-black text-[32px] font-bold"
               >
                 {{ dataResponse?.overview?.clinicName || '' }}
               </div>
