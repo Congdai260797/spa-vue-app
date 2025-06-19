@@ -1,7 +1,9 @@
 <script setup>
+  import { onMounted, ref } from 'vue';
   import { useRouter } from 'vue-router';
   import { useBookingPetStore } from './../../shared/stores/bookingStore';
   import BookingService from './booking.service';
+  import locations from './../../data/location.json';
 
   const bookingPetStore = useBookingPetStore();
 
@@ -9,9 +11,22 @@
 
   const router = useRouter();
 
+  const address = ref('');
+
   function goHome() {
     router.push('/');
   }
+
+  onMounted(() => {
+    const selectedCity = locations.find((location) => location.Id === bookingPetStore.selectedCity);
+    const selectedDistrict = locations
+      .find((location) => location.Id === bookingPetStore.selectedCity)
+      ?.Districts.find((district) => district.Id === bookingPetStore.selectedDistrict);
+    const selectedWard = selectedDistrict?.Wards.find(
+      (ward) => ward.Id === bookingPetStore.selectedWard
+    );
+    address.value = `${selectedWard?.Name}, ${selectedDistrict?.Name}, ${selectedCity?.Name}`;
+  });
 
   const ticketDetail = async () => {
     const request = {
@@ -55,13 +70,14 @@
         <div class="w-full h-[24px] text-[16px]">
           Số điện thoại : {{ bookingPetStore.phoneNumber }}
         </div>
-        <div class="w-full h-[24px] text-[16px]">Địa chỉ : {{ bookingPetStore.clientAddress }}</div>
+        <div class="w-full h-[24px] text-[16px]">Địa chỉ : {{ address }}</div>
       </div>
       <div class="w-[410px] box-shadow py-[8px] px-[16px] text-[#103559]">
         <div class="w-full h-[24px] text-[20px] font-bold">Thông tin lịch khám</div>
         <div class="mt-[8px] w-full h-[24px] text-[16px]">
           Lịch hẹn :{{ bookingPetStore.dateReservation }}
         </div>
+
         <div class="w-full text-[16px]">Phòng khám : {{ bookingPetStore.clinicName }}</div>
         <div class="w-full text-[16px]">Địa chỉ : {{ bookingPetStore.clinicAddress }}</div>
       </div>
