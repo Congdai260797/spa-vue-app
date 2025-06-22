@@ -24,7 +24,7 @@
             </div>
             <div>
               <div
-                class="w-[100px] h-[22px] py-[4px] px-[6px] border border-[#C1C1C1] rounded-[4px] flex items-center gap-x-[4px]"
+                class="w-[120px] h-[22px] py-[4px] px-[6px] border border-[#C1C1C1] rounded-[4px] flex items-center gap-x-[4px]"
               >
                 <img src="./../../assets/image/green-check.png" alt="icon-check" />
                 <span class="text-[10px] text-black font-normal">Đã kiểm chứng</span>
@@ -226,12 +226,12 @@
           <StarRating :rating="dataResponse?.overview?.rating" />
 
           <!-- title -->
-          <div class="mt-[24px] text-[16px] font-medium">Đặt tiêu đề bài đánh giá của bạn</div>
+          <div class="mt-[24px] text-[16px] font-medium">Họ và tên</div>
           <input
             v-model="formData.userName"
             type="text"
             class="w-full h-[44px] mt-[16px] border border-[#4d4d4d] rounded-[4px] px-[12px]"
-            placeholder="Điều quan trọng mà mọi người cần biết là gì?"
+            placeholder="Nhập họ và tên của bạn"
           />
           <p v-if="errors.userName" class="text-red-500">{{ errors.userName }}</p>
 

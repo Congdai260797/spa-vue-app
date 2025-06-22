@@ -50,6 +50,9 @@
   <div class="w-full">
     <div class="suggest-section w-full h-[60px] roundede-[20px] flex justify-between items-center">
       <div class="label">Chọn phòng khám phù hợp</div>
+      <p class="text-red-500 p-1" v-if="!bookingPetStore.clinicId && bookingPetStore.submitStatus">
+        Vui lòng chọn chọn phòng khám.
+      </p>
       <div class="buttons">
         <button class="bg-[#103559] text-white">Gợi ý từ AI</button>
         <button class="ml-[12px]">Gần tôi</button>

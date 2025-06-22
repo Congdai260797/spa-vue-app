@@ -1,29 +1,3 @@
-<script setup>
-  import { ref } from 'vue';
-  import bookingPetInfo from './booking-pet-info.vue';
-  import bookingClientInfo from './booking-client-info.vue';
-  import bookingClinicInfo from './booking-clinic-info.vue';
-  import bookingComplete from './booking-complete.vue';
-  // import { useBookingStore } from '../../shared/stores/bookingStore';
-  import { useBookingPetStore } from './../../shared/stores/bookingStore';
-  import locations from './../../data/location.json';
-
-  const bookingPetStore = useBookingPetStore();
-
-  const status = ref(1);
-  // const bookingStore = new useBookingStore();
-
-  function nextStep() {
-    status.value += 1;
-  }
-
-  function prevStep() {
-    if (status.value > 1) {
-      status.value -= 1;
-    }
-  }
-</script>
-
 <template>
   <div class="booking-layout">
     <div class="booking">
@@ -167,6 +141,57 @@
     <div class="square-2"></div>
   </div>
 </template>
+
+<script setup>
+  import { ref } from 'vue';
+  import bookingPetInfo from './booking-pet-info.vue';
+  import bookingClientInfo from './booking-client-info.vue';
+  import bookingClinicInfo from './booking-clinic-info.vue';
+  import bookingComplete from './booking-complete.vue';
+  // import { useBookingStore } from '../../shared/stores/bookingStore';
+  import { useBookingPetStore } from './../../shared/stores/bookingStore';
+  import locations from './../../data/location.json';
+
+  const bookingPetStore = useBookingPetStore();
+
+  const status = ref(1);
+  // const bookingStore = new useBookingStore();
+
+  const validate = () => {
+    if (status.value === 1) {
+      return !!(bookingPetStore.petType && bookingPetStore.serviceType);
+    }
+    if (status.value === 2) {
+      return !!(
+        bookingPetStore.userName &&
+        bookingPetStore.phoneNumber &&
+        bookingPetStore.selectedCity &&
+        bookingPetStore.selectedDistrict &&
+        bookingPetStore.selectedWard &&
+        bookingPetStore.dateReservation &&
+        !bookingPetStore.errorMessage
+      );
+    }
+    if (status.value === 3) {
+      return !!bookingPetStore.clinicId;
+    }
+    return false;
+  };
+
+  function nextStep() {
+    bookingPetStore.submitStatus = true;
+    if (validate()) {
+      bookingPetStore.submitStatus = false;
+      status.value += 1;
+    }
+  }
+
+  function prevStep() {
+    if (status.value > 1) {
+      status.value -= 1;
+    }
+  }
+</script>
 
 <style scoped>
   .booking-layout {

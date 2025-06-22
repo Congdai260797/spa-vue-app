@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
 export const useBookingPetStore = defineStore('bookingPet', () => {
-  const petType = ref('cho');
+  const petType = ref('');
   const serviceType = ref('');
   const petState = ref('');
   const userName = ref('');
@@ -17,6 +17,8 @@ export const useBookingPetStore = defineStore('bookingPet', () => {
   const clinicName = ref('');
   const clinicAddress = ref('');
   const address = ref('');
+  const submitStatus = ref(false);
+  const errorMessage = ref('');
 
   return {
     petType,
@@ -34,5 +36,7 @@ export const useBookingPetStore = defineStore('bookingPet', () => {
     clinicName,
     clinicAddress,
     address,
+    submitStatus,
+    errorMessage,
   };
 });
