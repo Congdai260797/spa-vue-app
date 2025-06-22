@@ -95,7 +95,6 @@
   watch(
     () => props.modelValue,
     (newValue) => {
-      console.log(Object.values(newValue));
       if (newValue) {
         clinicList.value = newValue.slice(0, 4).map((item, index) => ({
           image: item.logoUrl || '',

@@ -37,8 +37,6 @@
 
     const response = await bookingService.detailClinic(address);
     listClinic.value = response.data.clinics;
-
-    console.log(listClinic.value);
   });
 
   const addClinic = (clinic) => {

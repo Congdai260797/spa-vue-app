@@ -8,7 +8,11 @@ export default class ReviewService extends BaseService {
     super();
   }
 
-  async createReview(clinicId: string): Promise<any> {
+  async getReview(clinicId: string): Promise<any> {
     return this.get(`${this.publicApiUrl}/user/rating?clinicId=${clinicId}`);
+  }
+
+  async createReview(model: any): Promise<any> {
+    return this.post(`${this.publicApiUrl}/user/rating`, model);
   }
 }

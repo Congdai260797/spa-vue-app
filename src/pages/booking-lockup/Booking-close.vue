@@ -149,7 +149,6 @@
 
   const save = async () => {
     const response = await bookingService.detailClinic(props.booking.id);
-    console.log(response);
     if (response && response.data) {
       emit('update:isModal', true);
     } else {

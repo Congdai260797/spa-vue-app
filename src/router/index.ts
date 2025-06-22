@@ -64,7 +64,7 @@ const routes = [
     },
   },
   {
-    path: '/review',
+    path: '/review/:clinicId',
     name: 'Review',
     component: () => import('../pages/review/Review.vue'),
     meta: {

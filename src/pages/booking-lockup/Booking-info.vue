@@ -101,7 +101,6 @@
   const emit = defineEmits(['update:status', 'update:bookingID']);
 
   const detailBooking = (item) => {
-    console.log(item);
     emit('update:status', 2);
     emit('update:booking', item);
   };
