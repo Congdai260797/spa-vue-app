@@ -15,6 +15,10 @@
 
   const listClinic = ref([]);
 
+  const selected = ref(1);
+
+  const copyClinics = ref([]);
+
   onMounted(async () => {
     const selectedCity = bookingPetStore.selectedCity;
     const selectedDistrict = bookingPetStore.selectedDistrict;
@@ -37,12 +41,23 @@
 
     const response = await bookingService.detailClinic(address);
     listClinic.value = response.data.clinics;
+
+    copyClinics.value = [...response.data.clinics];
   });
 
   const addClinic = (clinic) => {
     bookingPetStore.clinicId = clinic.clinicId;
     bookingPetStore.clinicName = clinic.clinicName;
     bookingPetStore.clinicAddress = clinic.clinicAddress;
+  };
+
+  const fillterData = (type) => {
+    selected.value = type;
+    if (type === 0 || type === 1) {
+      listClinic.value = [...copyClinics.value];
+    } else if (type === 2) {
+      listClinic.value.sort((a, b) => b.rating - a.rating);
+    }
   };
 </script>
 
@@ -54,9 +69,15 @@
         Vui lòng chọn chọn phòng khám.
       </p>
       <div class="buttons">
-        <button class="bg-[#103559] text-white">Gợi ý từ AI</button>
-        <button class="ml-[12px]">Gần tôi</button>
-        <button class="ml-[12px]">Đánh giá</button>
+        <button class="ml-[12px]" :class="{ active: selected == 0 }" @click="fillterData(0)">
+          Gợi ý từ AI
+        </button>
+        <button class="ml-[12px]" :class="{ active: selected == 1 }" @click="fillterData(1)">
+          Gần tôi
+        </button>
+        <button class="ml-[12px]" :class="{ active: selected == 2 }" @click="fillterData(2)">
+          Đánh giá
+        </button>
       </div>
     </div>
 
@@ -77,9 +98,11 @@
 
           <div class="w-[300px] px-[24px]">
             <div class="w-full h-fit text-[#103559] text-[18px] font-bold leading-[24px]">
-              {{ clinic?.name }}
+              {{ clinic?.clinicName }}
             </div>
-            <div class="w-full h-fit text-[#103559] text-[14px] font-bold leading-[20px] mt-[8px]">
+            <div
+              class="w-full h-fit text-[#103559] text-[14px] font-bold leading-[20px] mt-[8px] line-clamp-3"
+            >
               {{ clinic?.clinicDescription }}
             </div>
             <div class="mt-[8px] flex justify-between items-center">
@@ -152,5 +175,16 @@
     overflow-y: auto;
     box-shadow: 0 0 8px rgba(16, 53, 89, 0.2);
     border-radius: 20px;
+  }
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Số dòng tối đa */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .active {
+    background-color: #103559;
+    color: white;
   }
 </style>

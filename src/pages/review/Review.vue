@@ -314,8 +314,7 @@
 
             <div class="mt-[24px]">
               <button
-                class="w-full h-[44px] bg-[#103559] rounded-[4px] text-[16px] text-white font-medium"
-                @click="submitReview"
+                class="w-full h-[44px] bg-[#103559] rounded-[4px] text-[16px] text-white font-medium cursor-pointer"
               >
                 Tiếp tục
               </button>
@@ -470,19 +469,19 @@
   const stars = [
     {
       star: 5,
-      value: 70,
+      value: 0,
     },
     {
       star: 4,
-      value: 17,
+      value: 0,
     },
     {
       star: 3,
-      value: 8,
+      value: 0,
     },
     {
       star: 2,
-      value: 4,
+      value: 0,
     },
     {
       star: 1,
@@ -497,9 +496,31 @@
     const response = await reviewService.getReview(clinicId.value);
     if (response.message === 'success') {
       dataResponse.value = response.data;
+      caculateStars(response.data.ratings);
     }
     isLoading.value = false;
   });
+
+  const caculateStars = (ratings) => {
+    const uniqueReviews = Array.from(
+      new Map(
+        ratings.map((item) => [item.phoneNumber + item.comment + item.experienceDate, item])
+      ).values()
+    );
+
+    const total = uniqueReviews.length;
+
+    uniqueReviews.forEach((review) => {
+      const starItem = stars.find((s) => s.star === review.rating);
+      if (starItem) {
+        starItem.value += 1;
+      }
+    });
+
+    stars.forEach((s) => {
+      s.value = total > 0 ? Math.round((s.value / total) * 100) : 0;
+    });
+  };
 
   const handleCheckboxChange = (selectedStar) => {
     if (formData.rating === selectedStar) {

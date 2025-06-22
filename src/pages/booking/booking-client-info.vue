@@ -19,7 +19,7 @@
     () => bookingPetStore.phoneNumber,
     (newValue) => {
       if (newValue && !phoneRegex.test(newValue)) {
-        errorMessage.value = 'Số điện thoại bắt đau bằng 0 và có độ dài từ 10 đến 11 chữ số.';
+        errorMessage.value = 'Số điện thoại bắt đầu bằng 0 và có độ dài từ 10 đến 11 chữ số.';
         bookingPetStore.errorMessage = errorMessage.value;
       } else {
         errorMessage.value = '';
