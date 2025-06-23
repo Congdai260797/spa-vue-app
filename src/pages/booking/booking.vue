@@ -218,6 +218,7 @@
     };
     const response = await bookingService.getBookingData(request);
     if (response.message == 'success') {
+      bookingPetStore.no = response.data.no;
     }
   };
 
