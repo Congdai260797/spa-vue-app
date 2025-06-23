@@ -115,21 +115,7 @@
   };
 
   const ticketDetail = async () => {
-    const request = {
-      petType: bookingPetStore.petType,
-      serviceType: bookingPetStore.serviceType,
-      petState: bookingPetStore.petState,
-      userName: bookingPetStore.userName,
-      email: bookingPetStore.email,
-      phoneNumber: bookingPetStore.phoneNumber,
-      dateReservation: bookingPetStore.dateReservation,
-      clinicId: bookingPetStore.clinicId,
-      address: bookingPetStore.address,
-    };
-    const response = await bookingService.getBookingData(request);
-    if (response.message == 'success') {
-      router.push('/booking/ticket-info');
-    }
+    router.push('/booking/ticket-info');
   };
 </script>
 

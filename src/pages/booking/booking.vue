@@ -1,7 +1,7 @@
 <template>
   <div class="booking-layout">
     <div class="booking">
-      <div class="booking-stepper">
+      <div class="booking-stepper" :class="{ ' ml-[62px]': clinicId }">
         <ol class="flex items-center w-full ml-[24px]">
           <!-- Step 1 -->
           <li
@@ -149,15 +149,15 @@
   import bookingClientInfo from './booking-client-info.vue';
   import bookingClinicInfo from './booking-clinic-info.vue';
   import bookingComplete from './booking-complete.vue';
-  // import { useBookingStore } from '../../shared/stores/bookingStore';
   import { useBookingPetStore } from './../../shared/stores/bookingStore';
   import locations from './../../data/location.json';
-
+  import BookingService from './booking.service';
   import { useRoute } from 'vue-router';
 
   const route = useRoute();
 
   const bookingPetStore = useBookingPetStore();
+  const bookingService = new BookingService();
 
   const status = ref(1);
 
@@ -194,11 +194,32 @@
       bookingPetStore.submitStatus = false;
       if (clinicId.value && status.value === 2) {
         status.value += 2;
+        saveForm();
       } else {
         status.value += 1;
+        if (status.value == 4) {
+          saveForm();
+        }
       }
     }
   }
+
+  const saveForm = async () => {
+    const request = {
+      petType: bookingPetStore.petType,
+      serviceType: bookingPetStore.serviceType,
+      petState: bookingPetStore.petState,
+      userName: bookingPetStore.userName,
+      email: bookingPetStore.email,
+      phoneNumber: bookingPetStore.phoneNumber,
+      dateReservation: bookingPetStore.dateReservation,
+      clinicId: clinicId.value || bookingPetStore.clinicId,
+      address: `${bookingPetStore?.clinicAddress}`,
+    };
+    const response = await bookingService.getBookingData(request);
+    if (response.message == 'success') {
+    }
+  };
 
   function prevStep() {
     if (status.value > 1) {
