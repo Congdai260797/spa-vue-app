@@ -165,7 +165,6 @@
 
   onMounted(() => {
     clinicId.value = route.query.clinicId || '';
-    console.log(clinicId.value, 'aaaaaaaaa');
   });
 
   const validate = () => {

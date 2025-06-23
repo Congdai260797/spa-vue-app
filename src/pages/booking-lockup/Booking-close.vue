@@ -78,16 +78,16 @@
             {{ booking.clinic.clinicName }}
           </div>
           <div class="w-full h-fit text-[16px] leading-[20px] mt-[8px]">
-            <span>Lịch hẹn:</span> <span class="font-bold">{{ booking.dateReservation }}</span>
+            <span>Lịch hẹn: </span> <span class="font-bold">{{ booking.dateReservation }}</span>
           </div>
           <div class="w-full h-fit text-[16px] leading-[20px] mt-[8px]">
-            <span>Thú cưng:</span>
+            <span>Thú cưng: </span>
             <span class="font-bold">{{
               listPetType.find((item) => item.value === booking.petType)?.name || ''
             }}</span>
           </div>
           <div class="w-full h-fit text-[16px] leading-[20px] mt-[8px]">
-            <span>Dịch vụ:</span>
+            <span>Dịch vụ: </span>
             <span class="font-bold">{{
               listService.find((item) => item.value === booking.serviceType)?.name || ''
             }}</span>
