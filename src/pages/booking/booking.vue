@@ -98,15 +98,15 @@
             <span>THÚ CƯNG</span>
           </li>
           <li class="flex flex-col w-full items-start">
-            <span class="ml-2">THÔNG TIN</span>
-            <span>KHÁCH HÀNG</span>
+            <span>THÔNG TIN</span>
+            <span style="margin-left: -5px">KHÁCH HÀNG</span>
           </li>
           <li class="flex flex-col w-full items-start" v-if="!clinicId">
             <span class="ml-5">CHỌN</span>
-            <span>PHÒNG KHÁM</span>
+            <span style="margin-left: -5px">PHÒNG KHÁM</span>
           </li>
           <li class="flex flex-col w-full items-start">
-            <span>HOÀN THÀNH</span>
+            <span style="margin-left: -5px">HOÀN THÀNH</span>
           </li>
         </ol>
       </div>
