@@ -88,21 +88,12 @@
   };
 
   const goBooking = () => {
-    router.push('/booking');
+    router.push('/booking?clinicId=' + clinic.value.clinicId);
   };
 
   const goReview = () => {
     router.push(`/review/${clinic.value.clinicId}`);
   };
-
-  // watch(
-  //   () => props.modelValue,
-  //   (newValue) => {
-  //     // if (newValue) {
-  //     //   clinic.value = newValue;
-  //     // }
-  //   }
-  // );
 </script>
 
 <style scoped>

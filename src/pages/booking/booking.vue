@@ -56,6 +56,7 @@
               'after:border-[#ffb775] after:border-b-2': status >= 3,
               'after:border-[#d3d3d3] after:border-b-2': status < 3,
             }"
+            v-if="!clinicId"
           >
             <span
               class="flex items-center justify-center min-w-[34px] h-[34px] rounded-full"
@@ -100,7 +101,7 @@
             <span class="ml-2">THÔNG TIN</span>
             <span>KHÁCH HÀNG</span>
           </li>
-          <li class="flex flex-col w-full items-start">
+          <li class="flex flex-col w-full items-start" v-if="!clinicId">
             <span class="ml-5">CHỌN</span>
             <span>PHÒNG KHÁM</span>
           </li>
@@ -113,7 +114,7 @@
       <div class="mt-[30px] w-full min-h-[300px]">
         <booking-pet-info v-if="status === 1" />
         <booking-client-info v-if="status === 2" />
-        <booking-clinic-info v-if="status === 3" />
+        <booking-clinic-info v-if="status === 3 && !clinicId" />
         <booking-complete v-if="status === 4" />
       </div>
 
@@ -143,7 +144,7 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue';
+  import { onMounted, ref } from 'vue';
   import bookingPetInfo from './booking-pet-info.vue';
   import bookingClientInfo from './booking-client-info.vue';
   import bookingClinicInfo from './booking-clinic-info.vue';
@@ -152,10 +153,20 @@
   import { useBookingPetStore } from './../../shared/stores/bookingStore';
   import locations from './../../data/location.json';
 
+  import { useRoute } from 'vue-router';
+
+  const route = useRoute();
+
   const bookingPetStore = useBookingPetStore();
 
   const status = ref(1);
-  // const bookingStore = new useBookingStore();
+
+  const clinicId = ref('');
+
+  onMounted(() => {
+    clinicId.value = route.query.clinicId || '';
+    console.log(clinicId.value, 'aaaaaaaaa');
+  });
 
   const validate = () => {
     if (status.value === 1) {
@@ -182,7 +193,11 @@
     bookingPetStore.submitStatus = true;
     if (validate()) {
       bookingPetStore.submitStatus = false;
-      status.value += 1;
+      if (clinicId.value && status.value === 2) {
+        status.value += 2;
+      } else {
+        status.value += 1;
+      }
     }
   }
 
