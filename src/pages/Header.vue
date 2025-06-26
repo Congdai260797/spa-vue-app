@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-cream">
+  <header class="bg-cream sticky top-0 z-50">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
       <!-- Logo -->
       <a href="/" class="text-2xl font-bold text-brand-blue">
