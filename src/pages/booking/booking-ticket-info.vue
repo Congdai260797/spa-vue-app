@@ -25,7 +25,7 @@
             <!-- ticket code -->
             <span
               class="w-[174px] h-[34px] leading-[34px] rounded-xl border border-white bg-[#30688A] text-center text-[20px] font-bold text-white"
-              >STT012088</span
+              >{{ bookingPetStore.no }}</span
             >
           </div>
 

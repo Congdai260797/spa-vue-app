@@ -2,10 +2,10 @@
   import { ref } from 'vue';
   import { onMounted } from 'vue';
   import BookingService from './booking.service';
-
   import { useBookingPetStore } from './../../shared/stores/bookingStore';
-
   import locations from './../../data/location.json';
+  import { useRouter } from 'vue-router';
+  const router = useRouter();
 
   const listCity = locations;
 
@@ -18,6 +18,8 @@
   const selected = ref(1);
 
   const copyClinics = ref([]);
+
+  const selectedClinic = ref('');
 
   onMounted(async () => {
     const selectedCity = bookingPetStore.selectedCity;
@@ -46,6 +48,8 @@
   });
 
   const addClinic = (clinic) => {
+    selectedClinic.value = clinic.clinicId;
+
     bookingPetStore.clinicId = clinic.clinicId;
     bookingPetStore.clinicName = clinic.clinicName;
     bookingPetStore.clinicAddress = clinic.clinicAddress;
@@ -58,6 +62,10 @@
     } else if (type === 2) {
       listClinic.value.sort((a, b) => b.rating - a.rating);
     }
+  };
+
+  const goClinicDetail = (clinicId) => {
+    router.push(`/clinic/${clinicId}`);
   };
 </script>
 
@@ -83,11 +91,12 @@
 
     <div class="list-clinic">
       <div
-        class="w-full h-[160px] flex items-center justify-start mb-6"
+        class="w-full h-[160px] flex items-center justify-start mb-6 shadow-lg"
+        :class="selectedClinic === clinic.clinicId ? 'rounded-[10px]' : ''"
         v-for="clinic in listClinic"
         :key="clinic.id"
       >
-        <div class="block_1 h-full flex items-center border-r border-[#C9CFD4]">
+        <div class="block_1 h-full flex items-center">
           <div class="w-[160px] h-full flex justify-center items-center object-cover">
             <img
               class="w-[160px] h-[160px] object-cover rounded-[10px]"
@@ -119,7 +128,9 @@
             </div>
           </div>
         </div>
-        <div class="block_2 w-[340px] text-[#103559] border-r border-[#C9CFD4] px-[24px]">
+        <div
+          class="flex flex-col justify-center block_2 w-[340px] text-[#103559] border-l-[2px] border-r-[2px] min-h-[100px] border-[#C9CFD4] px-[24px]"
+        >
           <div class="flex justify-start">
             <div class="min-w-[120px] text-[16px] font-bold text-[#103559]">Chuyên bệnh:</div>
             <div>{{ clinic?.clinicServices[0].nameService }}</div>
@@ -131,13 +142,17 @@
         </div>
         <div class="block_3 align-center w-[200px] px-[24px]">
           <button
-            class="w-[140px] h-[40px] border border-[#103559] bg-[#103559] text-white text-[16px] font-bold"
+            class="w-[140px] h-[40px] border border-[#103559] text-[16px] font-bold rounded-[20px] mt-[8px]"
+            :class="
+              selectedClinic === clinic.clinicId ? 'bg-[#103559] text-[#ffffff]' : 'text-[#103559]'
+            "
             @click="addClinic(clinic)"
           >
             Đặt lịch khám
           </button>
           <button
-            class="w-[140px] h-[40px] border border-[#103559] text-[#103559] text-[16px] font-bold mt-[8px]"
+            class="w-[140px] h-[40px] text-[#103559] text-[16px] font-bold mt-[8px] underline"
+            @click="goClinicDetail(clinic.clinicId)"
           >
             Xem chi tiết
           </button>

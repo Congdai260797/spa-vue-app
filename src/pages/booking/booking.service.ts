@@ -15,4 +15,8 @@ export default class BookingService extends BaseService {
   async detailClinic(address: string): Promise<any> {
     return this.get(`${this.publicApiUrl}/user/clinic?orderBy=&orderType=ASC&county=${address}`);
   }
+
+  async getDataClinic(clinicId: string): Promise<any> {
+    return this.get(`${this.publicApiUrl}/user/clinic/${clinicId}`);
+  }
 }
